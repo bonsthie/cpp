@@ -6,21 +6,21 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 14:49:41 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/11 15:37:20 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/05/12 18:10:47 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.h"
+#include "Contact.h"
 
-std::string contact::getFirstName(void) { return (_firstName); }
+std::string contact::getFirstName(void) const { return (_firstName); }
 
-std::string contact::getLastName(void) { return (_lastName); }
+std::string contact::getLastName(void) const { return (_lastName); }
 
-std::string contact::getNickname(void) { return (_nickname); }
+std::string contact::getNickname(void) const { return (_nickname); }
 
-std::string contact::getPhoneNumber(void) { return (_phoneNumber); }
+std::string contact::getPhoneNumber(void) const { return (_phoneNumber); }
 
-std::string contact::getDarkestSecret(void) { return (_darkestSecret); }
+std::string contact::getDarkestSecret(void) const { return (_darkestSecret); }
 
 void contact::setFirstName(std::string newFirstName) { _firstName = newFirstName; }
 
