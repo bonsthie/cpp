@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 18:28:14 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/12 21:24:01 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/05/13 23:52:07 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,52 @@
 #include <ctime>
 #include <iostream>
 
-#define PRINT_VARIABLE(arg, truncate) (char *)(#arg) + truncate << ":" << arg
-#define PRINT_VALUE(name, value) name << ":" << value
+/* utils Account class function  */
+
+void log(const char *name, int value) { std::cout << name << ":" << value; }
+
+void log(const char *name, int value, const char *name2) {
+    std::cout << name << ":" << value << ";" << name2;
+}
+
+void log(const char *name1, int value1, const char *name2, int value2) {
+    std::cout << name1 << ":" << value1 << ";";
+    log(name2, value2);
+}
+
+void log(const char *name1, int value1, const char *name2, int value2,
+         const char *name3) {
+    std::cout << name1 << ":" << value1 << ";";
+    log(name2, value2, name3);
+}
+
+void log(const char *name1, int value1, const char *name2, int value2,
+         const char *name3, int value3) {
+    std::cout << name1 << ":" << value1 << ";";
+    log(name2, value2, name3, value3);
+}
+
+void log(const char *name1, int value1, const char *name2, int value2,
+         const char *name3, int value3, const char *name4, int value4) {
+    std::cout << name1 << ":" << value1 << ";";
+    log(name2, value2, name3, value3, name4, value4);
+}
+
+void log(const char *name1, int value1, const char *name2, int value2,
+         const char *name3, int value3, const char *name4, int value4,
+         const char *name5, int value5) {
+    std::cout << name1 << ":" << value1 << ";";
+    log(name2, value2, name3, value3, name4, value4, name5, value5);
+}
+
+#define LOG(...)                                                               \
+    {                                                                          \
+        _displayTimestamp();                                                   \
+        log(__VA_ARGS__);                                                      \
+        std::cout << std::endl;                                                \
+    }
+
+/* Account classs function */
 
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
@@ -28,29 +72,37 @@ int Account::getNbDeposits(void) { return (_totalNbDeposits); }
 int Account::getNbWithdrawals(void) { return (_totalNbWithdrawals); }
 int Account::checkAmount(void) const { return (_amount); }
 
-static void printStartPrompt(int index, int amount) {
-    std::cout << PRINT_VARIABLE(index, 0) << ";" << PRINT_VARIABLE(amount, 0)
-              << ";";
-}
-
-static void printStartPromptTransaction(int index, int p_amount) {
-    std::cout << PRINT_VARIABLE(index, 0) << ";" << PRINT_VARIABLE(p_amount, 0)
-              << ";";
-}
-
 void Account::displayAccountsInfos(void) {
-    _displayTimestamp();
-    std::cout << PRINT_VALUE("accounts", _nbAccounts) << ";"
-              << PRINT_VALUE("total", _totalAmount) << ";"
-              << PRINT_VALUE("deposits", _totalNbDeposits) << ";"
-              << PRINT_VALUE("withdrawals", _totalNbWithdrawals) << std::endl;
+    LOG("account", _nbAccounts, "total", _totalAmount, "deposits",
+        _totalNbDeposits, "withdrawal", _totalNbWithdrawals);
 }
 
 void Account::displayStatus(void) const {
-    _displayTimestamp();
-    printStartPrompt(_accountIndex, _amount);
-    std::cout << PRINT_VALUE("deposits", _nbDeposits) << ";"
-              << PRINT_VALUE("withdrawals", _nbWithdrawals) << std::endl;
+    LOG("index", _accountIndex, "amount", _amount, "deposits", _nbDeposits,
+        "withdrawal", _nbWithdrawals);
+}
+
+void Account::makeDeposit(int deposit) {
+    _nbDeposits++;
+    _totalNbDeposits++;
+    _amount += deposit;
+    _totalAmount += deposit;
+    LOG("index", _accountIndex, "p_amount", _amount - deposit, "deposit",
+        deposit, "amount", _amount, "nb_deposit", _nbDeposits);
+}
+
+bool Account::makeWithdrawal(int withdrawal) {
+    if (withdrawal > _amount) {
+        LOG("index", _accountIndex, "p_amount", _amount, "withdrawal:refused");
+        return (false);
+    }
+    _nbWithdrawals++;
+    _totalNbWithdrawals++;
+    _totalAmount -= withdrawal;
+    _amount -= withdrawal;
+    LOG("index", _accountIndex, "p_amount", _amount + withdrawal, "amount",
+        _amount, "nb_withdrawals", _nbWithdrawals);
+    return (true);
 }
 
 void Account::_displayTimestamp() {
@@ -60,62 +112,16 @@ void Account::_displayTimestamp() {
     std::cout << "[" << timeStamp << "] ";
 }
 
-void Account::makeDeposit(int deposit) {
-    _nbDeposits++;
-    _totalNbDeposits++;
-    _displayTimestamp();
-    printStartPromptTransaction(_accountIndex, _amount);
-    _amount += deposit;
-    _totalAmount += deposit;
-    std::cout << PRINT_VARIABLE(deposit, 0) << ";" << PRINT_VARIABLE(_amount, 1)
-              << ";" << PRINT_VALUE("nb_deposit", _nbDeposits) << std::endl;
-}
-
-bool Account::makeWithdrawal(int withdrawal) {
-    _nbWithdrawals++;
-    _totalNbWithdrawals++;
-    _displayTimestamp();
-    printStartPromptTransaction(_accountIndex, _amount);
-    if (withdrawal > _amount) {
-        std::cout << "withdrawal:refused" << std::endl;
-        return (false);
-    }
-    _totalAmount -= withdrawal;
-    _amount -= withdrawal;
-    std::cout << PRINT_VARIABLE(withdrawal, 0) << ";"
-              << PRINT_VARIABLE(_amount, 1) << ";"
-              << PRINT_VALUE("nb_withdrawls", _nbWithdrawals) << std::endl;
-    return (true);
-}
-
 Account::Account(int initial_deposit)
-    : _nbDeposits(0),
-      _nbWithdrawals(0),
-      _accountIndex(_nbAccounts),
-      _amount(initial_deposit) {
+    : _accountIndex(_nbAccounts),
+      _amount(initial_deposit),
+      _nbDeposits(0),
+      _nbWithdrawals(0) {
     _nbAccounts++;
     _totalAmount += initial_deposit;
-    _displayTimestamp();
-    printStartPrompt(_accountIndex, _amount);
-    std::cout << "created" << std::endl;
+    LOG("index", _accountIndex, "amount", _amount, "created")
 }
 
 Account::~Account() {
-    _displayTimestamp();
-    printStartPrompt(_accountIndex, _amount);
-    std::cout << "closed" << std::endl;
-}
-
-int main() {
-    Account test(10);
-    Account test1(20);
-    Account test2(30);
-    test.displayAccountsInfos();
-    test.makeDeposit(100);
-    test.makeWithdrawal(50);
-    test1.makeWithdrawal(50);
-    test.displayStatus();
-    test.displayAccountsInfos();
-    test.getTotalAmount();
-    return 1;
+    LOG("index", _accountIndex, "amount", _amount, "closed");
 }

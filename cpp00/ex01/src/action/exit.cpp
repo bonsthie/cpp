@@ -6,12 +6,15 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 18:02:32 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/12 18:06:05 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/05/13 23:54:51 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../PhoneBook.h"
+#include "PhoneBook.h"
+#include <cstdlib>
+#include <iostream>
 
 void PhoneBook::EXIT(void) {
-    exit(0);
+	std::cout << "\nexited" << std::endl;
+	exit(0);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/09 18:13:27 by babonnet          #+#    #+#             */
+/*   Updated: 2024/05/13 22:07:29 by babonnet         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <algorithm>
 #include <cctype>
@@ -55,7 +67,7 @@ void megaphone(char **av)
 	std::cout << std::endl;
 }
 
-int main(int ac, char **av)
+int main(int __attribute__((unused)) ac, char **av)
 {
 	megaphone(av);
 }

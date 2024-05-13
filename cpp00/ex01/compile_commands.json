@@ -1,0 +1,87 @@
+[
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp00/ex01",
+  "arguments": [
+   "g++",
+   "-std=c++98",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I",
+   "include",
+   "-o",
+   "obj/Contact.o",
+   "-c",
+   "src/Contact.cpp"
+  ],
+  "file": "src/Contact.cpp"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp00/ex01",
+  "arguments": [
+   "g++",
+   "-std=c++98",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I",
+   "include",
+   "-o",
+   "obj/action/exit.o",
+   "-c",
+   "src/action/exit.cpp"
+  ],
+  "file": "src/action/exit.cpp"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp00/ex01",
+  "arguments": [
+   "g++",
+   "-std=c++98",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I",
+   "include",
+   "-o",
+   "obj/action/add.o",
+   "-c",
+   "src/action/add.cpp"
+  ],
+  "file": "src/action/add.cpp"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp00/ex01",
+  "arguments": [
+   "g++",
+   "-std=c++98",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I",
+   "include",
+   "-o",
+   "obj/action/search.o",
+   "-c",
+   "src/action/search.cpp"
+  ],
+  "file": "src/action/search.cpp"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp00/ex01",
+  "arguments": [
+   "g++",
+   "-std=c++98",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I",
+   "include",
+   "-o",
+   "obj/PhoneBook.o",
+   "-c",
+   "src/PhoneBook.cpp"
+  ],
+  "file": "src/PhoneBook.cpp"
+ }
+]

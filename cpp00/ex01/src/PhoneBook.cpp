@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 12:56:56 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/12 18:10:05 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/05/13 23:23:47 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,14 @@
 #include <cstdlib>
 #include <iostream>
 
-PhoneBook::PhoneBook(void) : _divider(43, '_'), _index(0) {}
+PhoneBook::PhoneBook(void) : _index(0), _divider(43, '_') {}
 
-// need to do check;
 std::string readInput() {
     std::string str;
 
     std::getline(std::cin, str);
     if (std::cin.eof())
-        exit(0);
-    /* if (str.empty()) */
-    /* 	return (NULL); */
+        std::exit(0);
     return (str);
 }
 

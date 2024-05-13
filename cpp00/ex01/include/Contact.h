@@ -6,16 +6,15 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 18:11:59 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/12 18:07:53 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/05/13 23:48:23 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "Contact.h"
 #include <string>
 
-class contact {
+class Contact {
   public:
     std::string getFirstName(void) const;
     std::string getLastName(void) const;

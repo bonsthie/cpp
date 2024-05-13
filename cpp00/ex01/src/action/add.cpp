@@ -6,18 +6,18 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 18:01:25 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/12 18:10:54 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/05/13 23:49:07 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../PhoneBook.h"
+#include "PhoneBook.h"
 #include <iostream>
 
 // need to check input
 void PhoneBook::ADD(void) {
     std::string input;
 
-    std::cout << "New contact creation" << std::endl;
+    std::cout << "New Contact creation" << std::endl;
     std::cout << "NAME: ";
     input = readInput();
     _contact[_index].setFirstName(input);
