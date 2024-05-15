@@ -6,13 +6,13 @@
 #    By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 22:19:06 by babonnet          #+#    #+#              #
-#    Updated: 2024/05/13 23:28:20 by babonnet         ###   ########.fr        #
+#    Updated: 2024/05/15 23:09:04 by babonnet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := PhoneBook
 CC := g++
-CFLAGS := -std=c++98 -Wall -Wextra -Werror
+CFLAGS := -std=c++98 -Wall -Wextra -Werror -g
 SRC_DIR := src
 HSRCS := include
 OBJ_DIR := obj
@@ -42,10 +42,6 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@echo "$(YELLOW)Compiling $(notdir $<)...$(NC)"
 	@$(CC) $(CFLAGS) -I $(HSRCS) -o $@ -c $<
 
-silentClean:
-	@rm -rf $(OBJ_DIR)
-	@rm -rf $(NAME)
-
 clean:
 	@echo "$(RED)Cleaning object files...$(NC)"
 	@rm -rf $(OBJ_DIR)
@@ -56,4 +52,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all avx2 clean fclean re silentClean
+.PHONY: all avx2 clean fclean re

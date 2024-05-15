@@ -6,7 +6,7 @@
 #    By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 23:28:47 by babonnet          #+#    #+#              #
-#    Updated: 2024/05/13 23:30:32 by babonnet         ###   ########.fr        #
+#    Updated: 2024/05/15 17:28:19 by babonnet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,10 +39,6 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@echo "$(YELLOW)Compiling $(notdir $<)...$(NC)"
 	@$(CC) $(CFLAGS) -I $(HSRCS) -o $@ -c $<
 
-silentClean:
-	@rm -rf $(OBJ_DIR)
-	@rm -rf $(NAME)
-
 clean:
 	@echo "$(RED)Cleaning object files...$(NC)"
 	@rm -rf $(OBJ_DIR)
@@ -53,4 +49,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all avx2 clean fclean re silentClean
+.PHONY: all avx2 clean fclean re

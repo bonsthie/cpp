@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 12:56:56 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/13 23:23:47 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/05/15 23:18:08 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,17 @@ std::string readInput() {
     return (str);
 }
 
-void PhoneBook::executeCommand(const std::string &command) {
+int PhoneBook::executeCommand(const std::string &command) {
     if (command.compare("ADD") == 0)
         ADD();
     else if (command.compare("SEARCH") == 0)
         SEARCH();
-    else if (command.compare("EXIT") == 0)
+    else if (command.compare("EXIT") == 0) {
         EXIT();
-    else
+        return (1);
+    } else
         std::cout << "Bad input" << std::endl;
+    return (0);
 }
 
 int main() {
@@ -43,6 +45,7 @@ int main() {
     for (;;) {
         std::cout << "Enter command (ADD, SEARCH, or EXIT): ";
         input = readInput();
-        phonebook.executeCommand(input);
+        if (phonebook.executeCommand(input))
+			break;
     }
 }

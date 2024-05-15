@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 18:11:59 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/13 23:48:23 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/05/14 15:38:15 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 #include <string>
 
 class Contact {
+  private:
+    std::string _firstName;
+    std::string _lastName;
+    std::string _nickname;
+    std::string _phoneNumber;
+    std::string _darkestSecret;
+
   public:
     std::string getFirstName(void) const;
     std::string getLastName(void) const;
@@ -27,11 +34,4 @@ class Contact {
     void setNickname(std::string newNickname);
     void setPhoneNumber(std::string newPhoneNumber);
     void setDarkestSecret(std::string newDarkestSecret);
-
-  private:
-    std::string _firstName;
-    std::string _lastName;
-    std::string _nickname;
-    std::string _phoneNumber;
-    std::string _darkestSecret;
 };
