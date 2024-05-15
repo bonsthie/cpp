@@ -1,0 +1,19 @@
+[
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp00/ex00",
+  "arguments": [
+   "g++",
+   "-std=c++98",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I",
+   ".",
+   "-o",
+   "obj/megaphone.o",
+   "-c",
+   "megaphone.cpp"
+  ],
+  "file": "megaphone.cpp"
+ }
+]

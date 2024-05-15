@@ -6,23 +6,18 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 12:56:56 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/15 23:18:08 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/05/16 00:14:21 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.h"
-#include <cstdlib>
 #include <iostream>
 
 PhoneBook::PhoneBook(void) : _index(0), _divider(43, '_') {}
 
-std::string readInput() {
-    std::string str;
-
-    std::getline(std::cin, str);
-    if (std::cin.eof())
-        std::exit(0);
-    return (str);
+bool readInput(std::string &input) {
+    std::getline(std::cin, input);
+    return !std::cin.eof();
 }
 
 int PhoneBook::executeCommand(const std::string &command) {
@@ -44,8 +39,9 @@ int main() {
 
     for (;;) {
         std::cout << "Enter command (ADD, SEARCH, or EXIT): ";
-        input = readInput();
+        if (readInput(input))
+            break;
         if (phonebook.executeCommand(input))
-			break;
+            break;
     }
 }
