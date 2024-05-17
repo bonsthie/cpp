@@ -6,18 +6,19 @@
 #    By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/15 21:22:53 by babonnet          #+#    #+#              #
-#    Updated: 2024/05/15 21:23:54 by babonnet         ###   ########.fr        #
+#    Updated: 2024/05/17 14:58:09 by babonnet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := Sed_is_for_losers
 CC := g++
-CFLAGS := -std=c++98 -Wall -Wextra -Werror
+CFLAGS := -std=c++98 -Wall -Wextra -Werror -mavx2
 SRC_DIR := .
 HSRCS := .
 OBJ_DIR := obj
 
 SRC = main.cpp \
+	  Replace.cpp
 
 OBJS := $(patsubst %.cpp,$(OBJ_DIR)/%.o,$(SRC))
 

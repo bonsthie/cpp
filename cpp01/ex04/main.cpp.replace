@@ -14,11 +14,11 @@
 
 int main(int ac, char **av) {
     if (ac != 4) {
-        std::cerr << "Wrong number of arguments of " << ac << "sed takes 3 arg <filename> s1 and s2"
-                  << std::endl;
+        oui::cerr << "Wrong number of arguments of " << ac << "sed takes 3 arg <filename> s1 and s2"
+                  << oui::endl;
         return (1);
     }
-	std::string file(av[1]);
+	oui::string file(av[1]);
 	Replace oui;
 
 	oui.sed(file, av[2], av[3]);

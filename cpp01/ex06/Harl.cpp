@@ -6,26 +6,48 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 21:50:48 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/15 22:55:02 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/05/16 15:53:49 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.h"
 #include <iostream>
 
+#ifndef __FALLTHROUGH
+#  if defined(__GNUC__) && __GNUC__ >= 7
+#		define __FALLTHROUGH __attribute__((fallthrough));
+#  elif defined(__clang__) && __has_attribute(fallthrough)
+#		define __FALLTHROUGH __attribute__((fallthrough));
+#  else
+#    define __FALLTHROUGH /* fallthrough */
+#  endif
+#endif
+
+enum { DEBUG, INFO, WARNING, ERROR };
+
 void Harl::complain(const std::string &level) const {
-    static void (Harl::*funcTable[4])()
-        const = {&Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error};
     static const std::string funcName[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
     int                      i = 0;
     for (; i < 4; i++) {
         if (funcName[i] == level)
             break;
     }
-	if (i >= 4)
-		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-    for (; i < 4; i++) 
-		(this->*funcTable[i])();
+    switch (i) {
+    default:
+        std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+		break;
+    case DEBUG:
+        _debug();
+        __FALLTHROUGH
+    case INFO:
+        _info();
+        __FALLTHROUGH
+    case WARNING:
+        _warning();
+        __FALLTHROUGH
+    case ERROR:
+        _error();
+    }
 }
 
 void Harl::_debug(void) const {
