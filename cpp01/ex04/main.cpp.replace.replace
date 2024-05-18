@@ -14,12 +14,12 @@
 
 int main(int ac, char **av) {
     if (ac != 4) {
-        std::cerr << "Wrong number of arguments of " << ac << "sed takes 3 arg <filename> s1 and s2"
-                  << std::endl;
+        non::cerr << "Wrong number of arguments of " << ac << "sed takes 3 arg <filename> s1 and s2"
+                  << non::endl;
         return (1);
     }
-	std::string file(av[1]);
-	File oui(file);
+	non::string file(av[1]);
+	File non(file);
 
-	oui.sed(av[2], av[3]);
+	non.sed(av[2], av[3]);
 }

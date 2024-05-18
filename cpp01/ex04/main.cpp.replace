@@ -6,11 +6,11 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 21:38:03 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/17 14:57:16 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/05/18 11:32:53 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Replace.h"
+#include "File.h"
 
 int main(int ac, char **av) {
     if (ac != 4) {
@@ -19,7 +19,7 @@ int main(int ac, char **av) {
         return (1);
     }
 	oui::string file(av[1]);
-	Replace oui;
+	File oui(file);
 
-	oui.sed(file, av[2], av[3]);
+	oui.sed(av[2], av[3]);
 }

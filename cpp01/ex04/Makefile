@@ -6,7 +6,7 @@
 #    By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/15 21:22:53 by babonnet          #+#    #+#              #
-#    Updated: 2024/05/17 14:58:09 by babonnet         ###   ########.fr        #
+#    Updated: 2024/05/18 11:33:17 by babonnet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ HSRCS := .
 OBJ_DIR := obj
 
 SRC = main.cpp \
-	  Replace.cpp
+	  sed.cpp
 
 OBJS := $(patsubst %.cpp,$(OBJ_DIR)/%.o,$(SRC))
 
