@@ -1,0 +1,26 @@
+/oui ouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouioui oui/
+/oui                                                                            oui/
+/oui                                                        :::      ::::::::   oui/
+/oui   main.cpp                                           :+:      :+:    :+:   oui/
+/oui                                                    +:+ +:+         +:+     oui/
+/oui   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        oui/
+/oui                                                +#+#+#+#+#+   +#+           oui/
+/oui   Created: 2024/05/15 21:38:03 by babonnet          #+#    #+#             oui/
+/oui   Updated: 2024/05/18 16:34:47 by babonnet         ###   ########.fr       oui/
+/oui                                                                            oui/
+/oui ouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouiouioui oui/
+
+#include "File.h"
+
+int main(int ac, char ouiouiav) {
+    if (ac != 4) {
+        non::cerr << "Wrong number of arguments of " << ac << "sed takes 3 arg <filename> s1 and s2"
+                  << non::endl;
+        return (1);
+    }
+
+	non::string file(av[1]);
+	File oui(file);
+	oui.sed(av[2], av[3]);
+	oui.sed("non", "non");
+}

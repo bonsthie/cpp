@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 21:38:03 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/18 11:32:53 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/05/18 16:36:00 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int main(int ac, char **av) {
                   << std::endl;
         return (1);
     }
+
 	std::string file(av[1]);
 	File oui(file);
-
 	oui.sed(av[2], av[3]);
 }

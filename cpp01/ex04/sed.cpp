@@ -6,60 +6,75 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 15:05:46 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/18 12:02:00 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/05/18 16:20:37 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "File.h"
+#include <cstddef>
 
-File::File(std::string filename)
-    : _infileName(filename),
-      _outfile(_infileName + ".replace"),
-      _isOpen(true) {
-    std::ifstream infile;
+#if defined(__AVX2__)
 
-    infile.open(filename.c_str());
-    if (!infile.is_open()) {
-        std::cerr << "Could not open file " + filename << std::endl;
-        _isOpen = false;
-        return;
+#    include <immintrin.h>
+
+size_t __avx2_find(const std::string &file, const std::string &s1, size_t pos) {
+    const char *str = file.c_str();
+    const char *pattern = s1.c_str();
+    size_t      file_len = file.length();
+    size_t      pat_len = s1.length();
+
+    if (pat_len == 0)
+        return pos;
+    if (file_len < pat_len)
+        return std::string::npos;
+
+    __m256i setFirstChar = _mm256_set1_epi8(pattern[0]);
+    __m256i data;
+    int     maskFirstChar;
+
+    while (pos <= file_len - 32 - pat_len) {
+        data = _mm256_loadu_si256((const __m256i *)(str + pos));
+        maskFirstChar = _mm256_movemask_epi8(_mm256_cmpeq_epi8(data, setFirstChar));
+
+        if (maskFirstChar) {
+            size_t candidate_pos = pos + __builtin_ctz(maskFirstChar);
+            if (candidate_pos + pat_len <= file_len &&
+                file.compare(candidate_pos, pat_len, s1) == 0) {
+                return candidate_pos;
+            }
+            pos = candidate_pos + 1;
+        } else
+            pos += 32;
+    }
+    for (; pos < file_len; ++pos) {
+        if (file.compare(pos, pat_len, s1) == 0) {
+            return pos;
+        }
     }
 
-    std::ostringstream contentStream;
-    contentStream << infile.rdbuf();
-    _strfile = contentStream.str();
-    infile.close();
+    return std::string::npos;
 }
 
-File::~File(void) {
-    std::string fileOutput;
-
-    std::ofstream outfile(_outfileName.c_str());
-    if (!outfile.is_open())
-        std::cerr << "Could not create the outfile" << std::endl;
-    else {
-        outfile << _strfile;
-        _outfile.close();
-    }
-}
+#    define FIND(file, s1, pos) __avx2_find(file, s1, pos)
+#else
+#    define FIND(file, s1, pos) file.find(s1, pos)
+#endif
 
 int File::sed(const std::string &s1, const std::string &s2) {
     if (s1.empty() || s2.empty()) {
-        std::cerr << "invalid parameter" << std::endl;
+        std::cerr << "sed :invalid parameter" << std::endl;
         return (1);
     }
     size_t pos = 0;
 
-    pos = _strfile.find(s1, pos);
+    pos = FIND(_strfile, s1, pos);
     while (pos < _strfile.length()) {
         _strfile.erase(pos, s1.length());
         _strfile.insert(pos, s2);
-        pos = _strfile.find(s1, pos);
+        pos = FIND(_strfile, s1, pos + s2.length());
     }
     return (0);
 }
-
-bool File::is_open(void) { return (_isOpen); }
 
 int sed(const std::string &file, const std::string &s1, const std::string &s2) {
     File input(file);
