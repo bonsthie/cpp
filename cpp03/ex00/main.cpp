@@ -1,4 +1,3 @@
-
 #include "ClapTrap.h"
 #include <iostream>
 
@@ -8,27 +7,27 @@
 int main(void) {
     std::cout << RED
               << "HIIIII WEEEEELLLCOMEEEEE TO THEEEE FIGHTTTTT OF THE DECADE!!!"
-              << std::endl
+              << RESET << std::endl
               << RED << "BOTH FIGHTERS ENTER THE ARENA" << RESET << std::endl;
 
     ClapTrap nb1("adjoly");
     ClapTrap nb2("ltouzali");
-	std::cout << std::endl;
+    std::cout << std::endl;
 
-	nb1.setAttackDamage(5);
+    nb1.setAttackDamage(4);
     nb1.attack(nb2.getName());
     nb2.takeDamage(nb1.getAttackDamage());
 
-	nb2.setAttackDamage(4);
-	nb2.attack(nb1.getName());
+    nb2.setAttackDamage(4);
+    nb2.attack(nb1.getName());
     nb1.takeDamage(nb2.getAttackDamage());
 
     nb2.setAttackDamage(299792458);
-    std::cout
-        << RED << nb2.getName()
-        << " INVOKES THE POWER OF PHYSICS, SETTING HIS POWER TO THE SPEED "
-           "OF LIGHT!!!"
-        << RESET << std::endl;
+    std::cout << RED
+              << nb2.getName()
+              << " INVOKES THE POWER OF PHYSICS, SETTING HIS POWER TO THE SPEED "
+                 "OF LIGHT!!!"
+              << RESET << std::endl;
     std::cout << RED << "OH MY GOD, HOW COULD " << nb1.getName() << " SURVIVE?"
               << RESET << std::endl;
     nb1.beRepaired(3249570025);
