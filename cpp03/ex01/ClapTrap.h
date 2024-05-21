@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 18:47:58 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/21 14:18:58 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/05/21 14:14:44 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,23 @@ class ClapTrap {
     ClapTrap(void);
     ~ClapTrap(void);
 
-    void attack(const std::string &target);
-    void takeDamage(unsigned int amount);
-    void beRepaired(unsigned int amount);
+    virtual void attack(const std::string &target);
+    virtual void takeDamage(unsigned int amount);
+    virtual void beRepaired(unsigned int amount);
 
-    void setName(const std::string &value);
-    void setHealth(const unsigned int &value);
-    void setEnergyPoint(const unsigned int &value);
-    void setAttackDamage(const unsigned int &value);
+    virtual void setName(const std::string &value);
+    virtual void setHealth(const unsigned int &value);
+    virtual void setEnergyPoint(const unsigned int &value);
+    virtual void setAttackDamage(const unsigned int &value);
 
-    std::string  getName(void) const;
-    unsigned int getHealth(void) const;
-    unsigned int getEnergyPoint(void) const;
-    unsigned int getAttackDamage(void) const;
+    virtual std::string  getName(void) const;
+    virtual unsigned int getHealth(void) const;
+    virtual unsigned int getEnergyPoint(void) const;
+    virtual unsigned int getAttackDamage(void) const;
 
-  private:
+  protected:
     std::string  _name;
     unsigned int _energyPoint;
-	unsigned int _attackDamage;
-	unsigned int _health;
+    unsigned int _attackDamage;
+    unsigned int _health;
 };
