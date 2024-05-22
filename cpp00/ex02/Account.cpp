@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 18:28:14 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/16 16:06:25 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/05/20 21:41:38 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void __log(int count, ...) {
         std::cout << std::endl;                                                                    \
     }
 
-/* Account classs function */
+/* Account class function */
 
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;

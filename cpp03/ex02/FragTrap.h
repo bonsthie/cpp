@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   FragTrap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 18:55:24 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/20 17:17:50 by babonnet         ###   ########.fr       */
+/*   Created: 2024/05/21 11:37:22 by babonnet          #+#    #+#             */
+/*   Updated: 2024/05/21 17:16:02 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.h"
+#pragma once
 
-Zombie *zombieHorde(int N, std::string name) {
+#include "ClapTrap.h"
 
-    Zombie *newZombies;
+class FragTrap : public ClapTrap {
+  public:
+    FragTrap(const std::string &name);
+    FragTrap(const FragTrap &other);
+    FragTrap(void);
+    ~FragTrap(void);
 
-	if (N <= 0)
-		return (NULL);
-    newZombies = ::new Zombie[N];
-    for (int i = 0; i < N; i++) {
-        newZombies[i].setName(name);
-    }
-    return (newZombies);
-}
+    void highFivesGuys(void);
+};

@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 18:55:24 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/20 17:17:50 by babonnet         ###   ########.fr       */
+/*   Created: 2024/05/21 14:26:10 by babonnet          #+#    #+#             */
+/*   Updated: 2024/05/21 15:43:43 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.h"
+#include "FragTrap.h"
 
-Zombie *zombieHorde(int N, std::string name) {
+#define RED "\033[31m"
+#define RESET "\033[0m"
 
-    Zombie *newZombies;
+int main(void) {
+	FragTrap oui("ahhhhh");
+	FragTrap non(oui);
 
-	if (N <= 0)
-		return (NULL);
-    newZombies = ::new Zombie[N];
-    for (int i = 0; i < N; i++) {
-        newZombies[i].setName(name);
-    }
-    return (newZombies);
+	non.setName("bhhhhhhhhhhhhhh");
+	oui.attack(non.getName());
+	oui.highFivesGuys();
+
 }

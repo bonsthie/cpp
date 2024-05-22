@@ -1,0 +1,36 @@
+[
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp02/ex02",
+  "arguments": [
+   "g++",
+   "-std=c++98",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I",
+   ".",
+   "-o",
+   "obj/main.o",
+   "-c",
+   "main.cpp"
+  ],
+  "file": "main.cpp"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp02/ex02",
+  "arguments": [
+   "g++",
+   "-std=c++98",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I",
+   ".",
+   "-o",
+   "obj/Fixed.o",
+   "-c",
+   "Fixed.cpp"
+  ],
+  "file": "Fixed.cpp"
+ }
+]

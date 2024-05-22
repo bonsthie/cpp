@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.h                                         :+:      :+:    :+:   */
+/*   DiamondTrap.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/21 11:37:22 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/21 17:16:18 by babonnet         ###   ########.fr       */
+/*   Created: 2024/05/21 16:07:28 by babonnet          #+#    #+#             */
+/*   Updated: 2024/05/21 19:27:00 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "ClapTrap.h"
+#include "FragTrap.h"
+#include "ScavTrap.h"
 
-class ScavTrap : public ClapTrap {
+class DiamondTrap : public ScavTrap, public FragTrap {
   public:
-    ScavTrap(const std::string &name);
-    ScavTrap(const ScavTrap &other);
-    ScavTrap(void);
-    ~ScavTrap(void);
+    DiamondTrap(const std::string &name);
+    DiamondTrap(const DiamondTrap &name);
+    DiamondTrap(void);
+    ~DiamondTrap(void);
 
-    void attack(const std::string &target);
-    void guardGate() const;
+    using ScavTrap::attack;
+    void whoAmI();
+
+  protected:
+    using FragTrap::_attackDamage;
+    using FragTrap::_health;
+    using ScavTrap::_energyPoint;
+
+  private:
+    std::string _name;
 };

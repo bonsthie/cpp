@@ -6,12 +6,14 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 15:17:37 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/21 19:20:11 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/05/21 18:01:15 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.h"
 #include <cmath>
+
+/* constructor  */
 
 Fixed::Fixed(void) : _num(0) {}
 

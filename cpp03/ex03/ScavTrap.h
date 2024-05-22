@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   ScavTrap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 18:55:24 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/20 17:17:50 by babonnet         ###   ########.fr       */
+/*   Created: 2024/05/21 11:37:22 by babonnet          #+#    #+#             */
+/*   Updated: 2024/05/21 19:08:42 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.h"
+#pragma once
 
-Zombie *zombieHorde(int N, std::string name) {
+#include "ClapTrap.h"
 
-    Zombie *newZombies;
+class ScavTrap : public virtual ClapTrap {
+  public:
+    ScavTrap(const std::string &name);
+    ScavTrap(const ScavTrap &other);
+    ScavTrap(void);
+    ~ScavTrap(void);
 
-	if (N <= 0)
-		return (NULL);
-    newZombies = ::new Zombie[N];
-    for (int i = 0; i < N; i++) {
-        newZombies[i].setName(name);
-    }
-    return (newZombies);
-}
+    void attack(const std::string &target);
+    void guardGate() const;
+};

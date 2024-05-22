@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   Point.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 18:55:24 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/20 17:17:50 by babonnet         ###   ########.fr       */
+/*   Created: 2024/05/19 21:41:58 by babonnet          #+#    #+#             */
+/*   Updated: 2024/05/19 23:46:37 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.h"
+#pragma once
 
-Zombie *zombieHorde(int N, std::string name) {
+#include "Fixed.h"
 
-    Zombie *newZombies;
+class Point {
+  public:
+    Point(const float &x, const float &y);
+    Point(const Point &point);
+    Point(void);
 
-	if (N <= 0)
-		return (NULL);
-    newZombies = ::new Zombie[N];
-    for (int i = 0; i < N; i++) {
-        newZombies[i].setName(name);
-    }
-    return (newZombies);
-}
+    Fixed getX(void) const;
+    Fixed getY(void) const;
+    float getXfloat(void) const;
+    float getYfloat(void) const;
+
+    Point &operator=(const Point &);
+    Point  operator-(const Point &other) const;
+
+  private:
+    Fixed _x;
+    Fixed _y;
+};
