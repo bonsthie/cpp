@@ -1,0 +1,12 @@
+BasedOnStyle: LLVM
+IndentWidth: 4
+ColumnLimit: 80
+AlignConsecutiveDeclarations: true
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+ConstructorInitializerIndentWidth: 4
+BreakConstructorInitializersBeforeComma: false
+BreakConstructorInitializers: BeforeColon
+AllowAllConstructorInitializersOnNextLine: false
+
+#define
+IndentPPDirectives: AfterHash

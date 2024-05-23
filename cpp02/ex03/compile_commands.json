@@ -1,0 +1,149 @@
+[
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp02/ex03",
+  "arguments": [
+   "g++",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-MMD",
+   "-MP",
+   "-std=c++11",
+   "-g",
+   "-Isrc",
+   "-I",
+   "MacroLibX/includes",
+   "-c",
+   "src/main.cpp",
+   "-o",
+   "obj/main.o"
+  ],
+  "file": "src/main.cpp"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp02/ex03",
+  "arguments": [
+   "g++",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-MMD",
+   "-MP",
+   "-std=c++11",
+   "-g",
+   "-Isrc",
+   "-I",
+   "MacroLibX/includes",
+   "-c",
+   "src/Fixed.cpp",
+   "-o",
+   "obj/Fixed.o"
+  ],
+  "file": "src/Fixed.cpp"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp02/ex03",
+  "arguments": [
+   "g++",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-MMD",
+   "-MP",
+   "-std=c++11",
+   "-g",
+   "-Isrc",
+   "-I",
+   "MacroLibX/includes",
+   "-c",
+   "src/bsp.cpp",
+   "-o",
+   "obj/bsp.o"
+  ],
+  "file": "src/bsp.cpp"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp02/ex03",
+  "arguments": [
+   "g++",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-MMD",
+   "-MP",
+   "-std=c++11",
+   "-g",
+   "-Isrc",
+   "-I",
+   "MacroLibX/includes",
+   "-c",
+   "src/Point.cpp",
+   "-o",
+   "obj/Point.o"
+  ],
+  "file": "src/Point.cpp"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp02/ex03",
+  "arguments": [
+   "g++",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-MMD",
+   "-MP",
+   "-std=c++11",
+   "-g",
+   "-Isrc",
+   "-I",
+   "MacroLibX/includes",
+   "-c",
+   "src/printLine.cpp",
+   "-o",
+   "obj/printLine.o"
+  ],
+  "file": "src/printLine.cpp"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp02/ex03",
+  "arguments": [
+   "g++",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-MMD",
+   "-MP",
+   "-std=c++11",
+   "-g",
+   "-Isrc",
+   "-I",
+   "MacroLibX/includes",
+   "-c",
+   "src/MlxClass.cpp",
+   "-o",
+   "obj/MlxClass.o"
+  ],
+  "file": "src/MlxClass.cpp"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp02/ex03",
+  "arguments": [
+   "g++",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-MMD",
+   "-MP",
+   "-std=c++11",
+   "-g",
+   "-Isrc",
+   "-I",
+   "MacroLibX/includes",
+   "-c",
+   "src/Triangle.cpp",
+   "-o",
+   "obj/Triangle.o"
+  ],
+  "file": "src/Triangle.cpp"
+ }
+]
