@@ -6,7 +6,7 @@
 #    By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/19 15:05:30 by babonnet          #+#    #+#              #
-#    Updated: 2024/05/23 21:51:23 by babonnet         ###   ########.fr        #
+#    Updated: 2024/05/23 22:37:02 by babonnet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,15 +17,15 @@ CC := g++
 CFLAGS = -Wall -Wextra -Werror -MMD -MP -std=c++98
 SRC_DIR := src
 OBJ_DIR := obj
-HSRCS := src -I src/vilualiser
+HSRCS := src -I src/visualiser
 
 SRC = src/main.cpp \
 	src/Fixed.cpp \
 	src/Point.cpp \
 	src/bsp.cpp \
-	src/vilualiser/printLine.cpp \
-	src/vilualiser/MlxClass.cpp \
-	src/vilualiser/Triangle.cpp \
+	src/visualiser/printLine.cpp \
+	src/visualiser/MlxClass.cpp \
+	src/visualiser/Triangle.cpp \
 
 OBJ := $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
