@@ -6,7 +6,7 @@
 #    By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/19 15:05:30 by babonnet          #+#    #+#              #
-#    Updated: 2024/05/23 21:08:07 by babonnet         ###   ########.fr        #
+#    Updated: 2024/05/23 21:51:23 by babonnet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -MMD -MP -std=c++98
 SRC_DIR := src
 OBJ_DIR := obj
 HSRCS := src -I src/vilualiser
+
 SRC = src/main.cpp \
 	src/Fixed.cpp \
 	src/Point.cpp \

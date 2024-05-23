@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 20:21:02 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/23 20:28:43 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/05/23 21:26:19 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 #if CPP11
 
-#    include "MlxClass.h"
 #    include "Triangle.h"
 
 int main() {
