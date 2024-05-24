@@ -36,10 +36,12 @@ To use the solutions in this repository:
 
 2. **Navigate to the desired module directory**
    ```bash
-    cd cpp
-```
+   cd module_directory
+   ```
+
 3. **Compile and run the code**
    Each module contains a `Makefile` for compiling the code. Use the following commands to compile and run the executable:
    ```bash
    make
    ./executable_name
+   ```
