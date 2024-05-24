@@ -38,9 +38,8 @@ To use the solutions in this repository:
    ```bash
     cd cpp
 ```
-3. **Compile and run the code**\
-Each module contains a `Makefile` for compiling the code. Use the following commands to compile and run the executable:
-```bash
-    make
-    ./executable_name
-```
+3. **Compile and run the code**
+   Each module contains a `Makefile` for compiling the code. Use the following commands to compile and run the executable:
+   ```bash
+   make
+   ./executable_name
