@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 19:33:19 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/21 14:25:14 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/05/22 23:49:24 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ ClapTrap::ClapTrap(const std::string &name)
 
 ClapTrap::ClapTrap(const ClapTrap &other) {
     *this = other;
-    std::cout << "ClapTrap " << _name << " constructor by copy called" << std::endl;
+    std::cout << "ClapTrap " << _name << " constructor by copy called"
+              << std::endl;
 }
 
 ClapTrap::ClapTrap(void) : _energyPoint(10), _attackDamage(0), _health(10) {

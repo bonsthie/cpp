@@ -12,7 +12,7 @@
    "-std=c++11",
    "-Isrc",
    "-I",
-   "src/vilualiser",
+   "src/visualiser",
    "-I",
    "MacroLibX/includes",
    "-c",
@@ -35,7 +35,7 @@
    "-std=c++11",
    "-Isrc",
    "-I",
-   "src/vilualiser",
+   "src/visualiser",
    "-I",
    "MacroLibX/includes",
    "-c",
@@ -58,7 +58,7 @@
    "-std=c++11",
    "-Isrc",
    "-I",
-   "src/vilualiser",
+   "src/visualiser",
    "-I",
    "MacroLibX/includes",
    "-c",
@@ -81,7 +81,7 @@
    "-std=c++11",
    "-Isrc",
    "-I",
-   "src/vilualiser",
+   "src/visualiser",
    "-I",
    "MacroLibX/includes",
    "-c",
@@ -104,15 +104,15 @@
    "-std=c++11",
    "-Isrc",
    "-I",
-   "src/vilualiser",
+   "src/visualiser",
    "-I",
    "MacroLibX/includes",
    "-c",
-   "src/vilualiser/printLine.cpp",
+   "src/visualiser/printLine.cpp",
    "-o",
-   "obj/vilualiser/printLine.o"
+   "obj/visualiser/printLine.o"
   ],
-  "file": "src/vilualiser/printLine.cpp"
+  "file": "src/visualiser/printLine.cpp"
  },
  {
   "directory": "/nfs/homes/babonnet/Documents/cpp/cpp02/ex03",
@@ -127,15 +127,15 @@
    "-std=c++11",
    "-Isrc",
    "-I",
-   "src/vilualiser",
+   "src/visualiser",
    "-I",
    "MacroLibX/includes",
    "-c",
-   "src/vilualiser/MlxClass.cpp",
+   "src/visualiser/MlxClass.cpp",
    "-o",
-   "obj/vilualiser/MlxClass.o"
+   "obj/visualiser/MlxClass.o"
   ],
-  "file": "src/vilualiser/MlxClass.cpp"
+  "file": "src/visualiser/MlxClass.cpp"
  },
  {
   "directory": "/nfs/homes/babonnet/Documents/cpp/cpp02/ex03",
@@ -150,14 +150,14 @@
    "-std=c++11",
    "-Isrc",
    "-I",
-   "src/vilualiser",
+   "src/visualiser",
    "-I",
    "MacroLibX/includes",
    "-c",
-   "src/vilualiser/Triangle.cpp",
+   "src/visualiser/Triangle.cpp",
    "-o",
-   "obj/vilualiser/Triangle.o"
+   "obj/visualiser/Triangle.o"
   ],
-  "file": "src/vilualiser/Triangle.cpp"
+  "file": "src/visualiser/Triangle.cpp"
  }
 ]

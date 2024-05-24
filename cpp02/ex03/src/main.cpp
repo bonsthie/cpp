@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 20:21:02 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/23 21:26:19 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/05/24 13:23:13 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int main() {
     Point    b(1500.0f, 100.0f);
     Point    c(1000.0f, 800.0f);
     Triangle triangle(a, b, c);
+    Triangle triangle2(a, b, c);
 
     triangle.hook();
     triangle.loop_hook();
