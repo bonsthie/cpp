@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 12:28:52 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/15 23:16:19 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/06/15 23:17:02 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,4 @@ class PhoneBook {
 	int executeCommand(const std::string &command);
 };
 
-std::string readInput();
+bool readInput(std::string &input);

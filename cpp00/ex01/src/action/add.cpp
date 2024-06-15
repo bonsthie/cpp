@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 18:01:25 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/14 00:34:35 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/06/15 23:19:29 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,20 @@ void PhoneBook::ADD(void) {
 
     std::cout << "New Contact creation" << std::endl;
     std::cout << "NAME: ";
-    input = readInput();
+    readInput(input);
     _contact[_index].setFirstName(input);
     std::cout << "LAST NAME: ";
-    input = readInput();
+    readInput(input);
     _contact[_index].setLastName(input);
     std::cout << "NICKNAME: ";
-    input = readInput();
+    readInput(input);
+    readInput(input);
     _contact[_index].setNickname(input);
     std::cout << "PHONE NUMBER: ";
-    input = readInput();
+    readInput(input);
     _contact[_index].setPhoneNumber(input);
     std::cout << "DARKEST SECRET: ";
-    input = readInput();
+    readInput(input);
     _contact[_index].setDarkestSecret(input);
     _index++;
 }

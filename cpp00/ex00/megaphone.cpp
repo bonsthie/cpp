@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 18:13:27 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/16 00:26:12 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:40:11 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <iostream>
 
 #if defined(__AVX2__)
+
 #include <immintrin.h>
 #include <cstring>
 

@@ -9,6 +9,7 @@
    "-Werror",
    "-I",
    ".",
+   "-mavx2",
    "-o",
    "obj/megaphone.o",
    "-c",

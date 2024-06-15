@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 18:02:58 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/14 15:29:00 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/06/15 23:17:23 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void PhoneBook::SEARCH(void) {
     }
     displayTable(_contact, _divider);
     std::cout << "Enter un index: ";
-    str = readInput();
+    readInput(str);
     int index = fill_number(str.c_str()) - 1;
     if (index >= 8 || index < 0)
         std::cout << "this index " << index + 1 << " is out of scop" << std::endl;
