@@ -6,62 +6,53 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 18:13:27 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/30 16:40:11 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/07/06 01:26:56 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cctype>
+#include <cstring>
 #include <iostream>
 
 #if defined(__AVX2__)
+#	define TAG(x) _mm_##x
+#	define TAG_SI(x) _mm_##x##_si128
+#	define TYPE __m128i
+#	define SIZE 16
+#	include "megaphone.h"
 
-#include <immintrin.h>
-#include <cstring>
-
-__m256i _mm256_islower_epi8(__m256i data) {
-    return _mm256_and_si256(_mm256_cmpgt_epi8(data, _mm256_set1_epi8('a' - 1)),
-                            _mm256_cmpgt_epi8(_mm256_set1_epi8('z'), data));
-}
-
-__m256i _mm256_toupper_epi8(__m256i data) {
-    __m256i mask = _mm256_islower_epi8(data);
-    __m256i upper_mask = _mm256_set1_epi8(0xDF);
-    __m256i lower_to_upper = _mm256_and_si256(data, upper_mask);
-
-    return _mm256_or_si256(_mm256_and_si256(mask, lower_to_upper), _mm256_andnot_si256(mask, data));
-}
-
-void to_uppercase(char *str) {
-    size_t len = strlen(str);
-    size_t i = 0;
-
-    for (; i + 32 <= len; i += 32) {
-        __m256i data = _mm256_loadu_si256((__m256i *)(str + i));
-        data = _mm256_toupper_epi8(data);
-        _mm256_storeu_si256((__m256i *)(str + i), data);
-    }
-    for (; str[i]; i++) {
-		str[i] = toupper(str[i]);
-    }
-}
-#else
-
-void to_uppercase(char *str) {
-    for (int i = 0; str[i]; i++) {
-		str[i] = toupper(str[i]);
-    }
-}
-
+#	define TAG(x) _mm256_##x
+#	define TAG_SI(x) _mm256_##x##_si256
+#	define TYPE __m256i
+#	define SIZE 32
+#	include "megaphone.h"
 #endif
 
-void megaphone(char **av) {
-    if (!*av)
-        std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-    for (; *av; av++) {
-        to_uppercase(*av);
-        std::cout << *av;
-    }
-    std::cout << std::endl;
+void to_uppercase(char *str) {
+  size_t len = strlen(str);
+  size_t i = 0;
+
+#if defined(__AVX2__)
+  _mm256_toupper_epi8(str, &i, len);
+  _mm_toupper_epi8(str, &i, len);
+#endif
+  for (; i < len; i++) {
+    str[i] = std::toupper(str[i]);
+  }
 }
 
-int main(int __attribute__((unused)) ac, char **av) { megaphone(++av); }
+void megaphone(char **av) {
+  if (!*av) {
+    std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+  } else {
+    for (; *av; av++) {
+      to_uppercase(*av);
+      std::cout << *av << " ";
+    }
+  }
+  std::cout << std::endl;
+}
+
+int main(int, char **av) {
+  megaphone(++av);
+  return 0;
+}
