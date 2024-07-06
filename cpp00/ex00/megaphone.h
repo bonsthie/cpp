@@ -6,11 +6,11 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:37:26 by babonnet          #+#    #+#             */
-/*   Updated: 2024/07/06 14:32:07 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/07/06 15:04:35 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#if defined(__AVX2__) || defined(__SSE__)
+#if defined(__AVX2__) || defined(__SSE2__)
 
 #include <immintrin.h>
 
