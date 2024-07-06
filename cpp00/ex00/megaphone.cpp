@@ -6,46 +6,14 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 18:13:27 by babonnet          #+#    #+#             */
-/*   Updated: 2024/07/06 15:19:49 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/07/06 15:20:34 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cstring>
 #include <iostream>
 
-#if defined(__AVX512BW__)
-#	define SIMD_LVL 512
-#elif defined(__AVX2__)
-#	define SIMD_LVL 256
-#elif defined(__SSE4_2__)
-#	define SIMD_LVL 128
-#else
-#	define SIMD_LVL 0
-#endif
-
-#if SIMD_LVL >= 512
-#	define TAG(x) _mm512_##x
-#	define TAG_SI(x) _mm512_##x##_si512
-#	define TYPE __m512i
-#	define SIZE 64
-#	include "megaphone.h"
-#endif
- 
-#if SIMD_LVL >= 256
-#	define TAG(x) _mm256_##x
-#	define TAG_SI(x) _mm256_##x##_si256
-#	define TYPE __m256i
-#	define SIZE 32
-#	include "megaphone.h"
-#endif
- 
-#if SIMD_LVL >= 128
-#	define TAG(x) _mm_##x
-#	define TAG_SI(x) _mm_##x##_si128
-#	define TYPE __m128i
-#	define SIZE 16
-#	include "megaphone.h"
-#endif
+#include "simd.h"
 
 void to_uppercase(char *str) {
   size_t len = strlen(str);
