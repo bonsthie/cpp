@@ -6,13 +6,29 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:37:26 by babonnet          #+#    #+#             */
-/*   Updated: 2024/07/06 15:04:35 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/07/09 00:28:04 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #if defined(__AVX2__) || defined(__SSE2__)
 
 #include <immintrin.h>
+
+#ifndef TAG
+# define TAG(x) _mm_##x
+#endif
+
+#ifndef TAG_SI
+# define TAG_SI(x) _mm_##x##_si128
+#endif
+
+#ifndef SIZE
+# define SIZE 16
+#endif
+
+#ifndef TYPE
+# define TYPE __m128i
+#endif
 
 #if defined(__clang__) || defined(__GNUC__)
 #	define TYPE_ALIGN __attribute__((aligned(SIZE))) TYPE
