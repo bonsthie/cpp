@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 18:13:27 by babonnet          #+#    #+#             */
-/*   Updated: 2024/07/06 15:20:34 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/07/09 00:28:01 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,6 @@ void megaphone(char **av) {
 }
 
 int main(int, char **av) {
-#if defined(__AVX515BW__)
-  std::cout << "fseffsfsf" << std::endl;
-#endif
   megaphone(++av);
   return 0;
 }
