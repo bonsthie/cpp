@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   File.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
+/*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 13:27:09 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/18 13:59:36 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/08/06 14:51:17 by bonsthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "File.h"
+#include <iostream>
+#include <sstream>
 
 File::File(const std::string &filename)
     : _infileName(filename),

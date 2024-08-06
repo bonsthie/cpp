@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   File.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
+/*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:21:28 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/18 13:59:47 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/08/06 14:42:42 by bonsthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <fstream>
-#include <iostream>
-#include <sstream>
 
 class File : public std::ifstream {
   public:

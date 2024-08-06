@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
+/*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 18:13:27 by babonnet          #+#    #+#             */
-/*   Updated: 2024/07/09 00:29:14 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/08/06 16:49:11 by bonsthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,36 @@
 
 #include "simd.h"
 
-void to_uppercase(char *str) {
-  size_t len = strlen(str);
+void to_uppercase(std::string &str) {
+  size_t len = str.length();
+  char *cstr = const_cast<char *>(str.c_str());
   size_t i = 0;
 
 #if SIMD_LVL >= 512
-  _mm512_toupper_epi8(str, &i, len);
+  _mm512_toupper_epi8(cstr, &i, len);
 #endif
 #if SIMD_LVL >= 256
-  _mm256_toupper_epi8(str, &i, len);
+  _mm256_toupper_epi8(cstr, &i, len);
 #endif
 #if SIMD_LVL >= 128
-  _mm_toupper_epi8(str, &i, len);
+  _mm_toupper_epi8(cstr, &i, len);
 #endif
   for (; i < len; i++) {
-    str[i] = std::toupper(str[i]);
+    cstr[i] = std::toupper(cstr[i]);
   }
 }
 
 void megaphone(char **av) {
+  std::string str;
   if (!*av) {
     std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
   } else {
     for (; *av; av++) {
-      to_uppercase(*av);
-      std::cout << *av << " ";
+      str.append(*av);
     }
   }
-  std::cout << std::endl;
+  to_uppercase(str);
+  std::cout << str << std::endl;
 }
 
 int main(int, char **av) {

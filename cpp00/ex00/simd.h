@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simd.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
+/*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 14:50:17 by babonnet          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/07/06 15:20:22 by babonnet         ###   ########.fr       */
-=======
-/*   Updated: 2024/07/08 17:40:33 by babonnet         ###   ########.fr       */
->>>>>>> refs/remotes/origin/main
+/*   Updated: 2024/08/06 14:51:38 by bonsthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
