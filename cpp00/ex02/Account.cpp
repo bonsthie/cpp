@@ -6,7 +6,7 @@
 /*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 18:28:14 by babonnet          #+#    #+#             */
-/*   Updated: 2024/08/06 16:48:39 by bonsthie         ###   ########.fr       */
+/*   Updated: 2024/08/06 17:14:06 by bonsthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,17 +83,22 @@ bool Account::makeWithdrawal(int withdrawal) {
     _totalNbWithdrawals++;
     _totalAmount -= withdrawal;
     _amount -= withdrawal;
-	std::cout << "tetst" ;
     LOG(10, "index", _accountIndex, "p_amount", _amount + withdrawal, "withdrawal", withdrawal, "amount", _amount,
         "nb_withdrawals", _nbWithdrawals);
     return (true);
 }
 
-void Account::_displayTimestamp() {
-    time_t timeStamp;
+void	Account::_displayTimestamp(void)
+{
+	time_t		rawtime;
+	struct tm	*timeinfo;
+	char buffer	[30];
 
-    time(&timeStamp);
-    std::cout << "[" << timeStamp << "] ";
+	time (&rawtime);
+	timeinfo = localtime (&rawtime);
+
+	strftime (buffer,30,"[%Y%m%d_%H%M%S] ",timeinfo);
+	std::cout << buffer; 
 }
 
 Account::Account(int initial_deposit)
