@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
+/*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 21:41:58 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/23 17:22:18 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/08/08 18:57:39 by bonsthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ class Point {
     float getYfloat(void) const;
     int   getXint(void) const;
     int   getYint(void) const;
-	void setXint(int value);
-	void setYint(int value);
+    void  setXint(int value);
+    void  setYint(int value);
 
     Point &operator=(const Point &);
     Point  operator-(const Point &other) const;
 
   private:
-    Fixed _x;
-    Fixed _y;
+    const Fixed _x;
+    const Fixed _y;
 };
