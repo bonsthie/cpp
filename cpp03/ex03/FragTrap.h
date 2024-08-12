@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
+/*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:37:22 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/21 18:11:39 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/08/12 17:30:47 by bonsthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 #include "ClapTrap.h"
 
-class FragTrap : public virtual ClapTrap {
+class FragTrap : virtual public ClapTrap {
   public:
     FragTrap(const std::string &name);
     FragTrap(const FragTrap &other);
     FragTrap(void);
     ~FragTrap(void);
+	
+    FragTrap &operator=(const FragTrap &);
 
     void highFivesGuys(void);
 };
