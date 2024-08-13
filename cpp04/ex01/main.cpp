@@ -1,32 +1,42 @@
 #include "Animal.h"
-#include "WrongAnimal.h"
-#include "WrongCat.h"
 #include "Cat.h"
 #include "Dog.h"
 #include <iostream>
 
-int main() {
-	{
-		const Animal *meta = new Animal();
-		const Animal *j = new Dog();
-		const Animal *i = new Cat();
-		std::cout << j->getType() << " " << std::endl;
-		std::cout << i->getType() << " " << std::endl;
-		i->makeSound(); // will output the cat sound!
-		j->makeSound();
-		meta->makeSound();
-		delete meta;
-		delete i;
-		delete j;
-	}
+#define STRINGIFY(x) #x
+#define TOSTRING(x) STRINGIFY(x)
+#define NEW_IDEAR ("idea_" TOSTRING(__COUNTER__))
 
-	{
-		const WrongAnimal *meta = new WrongAnimal();
-		const WrongAnimal *i = new WrongCat();
-		std::cout << i->getType() << " " << std::endl;
-		i->makeSound();
-		meta->makeSound();
-		delete meta;
-		delete i;
-	}
+int main() {
+  std::cout << "---- delete test----" << std::endl;
+  {
+    Animal *zoo[100];
+
+    for (int i = 0; i < 50; i++) {
+      zoo[i] = new Cat();
+    }
+
+    for (int i = 50; i < 100; i++) {
+      zoo[i] = new Dog();
+    }
+
+    for (int i = 0; i < 100; i++) {
+      delete zoo[i];
+    }
+  }
+  std::cout << "---- copy test----" << std::endl;
+  {
+    Cat *a = new Cat();
+    for (int i = 0; i < 10; i++) {
+      std::string idea = "idea_" + std::string(1, '0' + i);
+      a->setBrainIdear(idea, i);
+      std::cout << i << " " << a->getBrainIdear(i) << std::endl;
+    }
+    std::cout << std::endl;
+    Cat b;
+    b = *a;
+    for (int i = 0; i < 10; i++)
+      std::cout << i << " " << b.getBrainIdear(i) << std::endl;
+    delete a;
+  }
 }

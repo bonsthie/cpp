@@ -8,6 +8,7 @@ OBJ_DIR := obj
 SRC = main.cpp \
 	  Dog.cpp \
 	  Cat.cpp \
+	  Brain.cpp \
 	  Animal.cpp \
 	  WrongAnimal.cpp \
 	  WrongCat.cpp \
