@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+         #
+#    By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/15 17:27:24 by babonnet          #+#    #+#              #
-#    Updated: 2024/05/15 19:46:07 by babonnet         ###   ########.fr        #
+#    Updated: 2024/08/06 14:03:02 by bonsthie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,11 @@ OBJ_DIR := obj
 SRC = main.cpp \
 	Zombie.cpp \
 	zombieHorde.cpp \
+
+ifeq ($(VERBOSE),true)
+	CFLAGS += -D VERBOSE
+endif
+
 
 OBJS := $(patsubst %.cpp,$(OBJ_DIR)/%.o,$(SRC))
 

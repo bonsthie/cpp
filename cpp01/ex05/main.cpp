@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
+/*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 21:43:24 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/15 22:56:33 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/08/06 14:45:25 by bonsthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ int main(void) {
 	harl.complain("DEBUG");
 	harl.complain("WARNING");
 	harl.complain("ERROR");
-	harl.complain("oui");
+	harl.complain("yes");
 }

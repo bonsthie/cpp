@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
+/*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 18:28:14 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/20 21:41:38 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/08/07 17:03:47 by bonsthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ int Account::getNbWithdrawals(void) { return (_totalNbWithdrawals); }
 int Account::checkAmount(void) const { return (_amount); }
 
 void Account::displayAccountsInfos(void) {
-    LOG(8, "account", _nbAccounts, "total", _totalAmount, "deposits", _totalNbDeposits,
-        "withdrawal", _totalNbWithdrawals);
+    LOG(8, "accounts", _nbAccounts, "total", _totalAmount, "deposits", _totalNbDeposits,
+        "withdrawals", _totalNbWithdrawals);
 }
 
 void Account::displayStatus(void) const {
-    LOG(8, "index", _accountIndex, "amount", _amount, "deposits", _nbDeposits, "withdrawal",
+    LOG(8, "index", _accountIndex, "amount", _amount, "deposits", _nbDeposits, "withdrawals",
         _nbWithdrawals);
 }
 
@@ -71,7 +71,7 @@ void Account::makeDeposit(int deposit) {
     _amount += deposit;
     _totalAmount += deposit;
     LOG(10, "index", _accountIndex, "p_amount", _amount - deposit, "deposit", deposit, "amount",
-        _amount, "nb_deposit", _nbDeposits);
+        _amount, "nb_deposits", _nbDeposits);
 }
 
 bool Account::makeWithdrawal(int withdrawal) {
@@ -83,16 +83,22 @@ bool Account::makeWithdrawal(int withdrawal) {
     _totalNbWithdrawals++;
     _totalAmount -= withdrawal;
     _amount -= withdrawal;
-    LOG(8, "index", _accountIndex, "p_amount", _amount + withdrawal, "amount", _amount,
+    LOG(10, "index", _accountIndex, "p_amount", _amount + withdrawal, "withdrawal", withdrawal, "amount", _amount,
         "nb_withdrawals", _nbWithdrawals);
     return (true);
 }
 
-void Account::_displayTimestamp() {
-    time_t timeStamp;
+void	Account::_displayTimestamp(void)
+{
+	time_t		rawtime;
+	struct tm	*timeinfo;
+	char buffer	[30];
 
-    time(&timeStamp);
-    std::cout << "[" << timeStamp << "] ";
+	time (&rawtime);
+	timeinfo = localtime (&rawtime);
+
+	strftime (buffer,30,"[%Y%m%d_%H%M%S] ",timeinfo);
+	std::cout << buffer; 
 }
 
 Account::Account(int initial_deposit)

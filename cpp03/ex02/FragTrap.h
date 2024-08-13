@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
+/*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:37:22 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/21 17:16:02 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/08/12 14:55:22 by bonsthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ class FragTrap : public ClapTrap {
     FragTrap(const FragTrap &other);
     FragTrap(void);
     ~FragTrap(void);
+	
+    FragTrap &operator=(const FragTrap &);
 
     void highFivesGuys(void);
 };

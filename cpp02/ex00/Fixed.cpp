@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
+/*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 15:17:37 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/19 16:25:17 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/08/12 14:32:20 by bonsthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.h"
 #include <iostream>
 
-Fixed::Fixed(void) : _num(0) { std::cout << "Default constructor called" << std::endl; }
+Fixed::Fixed(void) : _num(0) {
+    std::cout << "Default constructor called" << std::endl;
+}
 
 Fixed::Fixed(const Fixed &new_value) {
     std::cout << "Copy constructor called" << std::endl;

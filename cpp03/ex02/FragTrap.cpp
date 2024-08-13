@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
+/*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:44:29 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/21 15:48:10 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/08/12 14:55:01 by bonsthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,10 @@ FragTrap::~FragTrap(void) {
 
 void FragTrap::highFivesGuys(void) {
     std::cout << "FragTrap " << _name << ": high fives request" << std::endl;
+}
+
+FragTrap &FragTrap::operator=(const FragTrap &value) {
+	if (this != &value)
+		ClapTrap::operator=(value);
+	return (*this);
 }

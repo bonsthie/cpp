@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
+/*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:44:29 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/21 17:15:55 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/08/12 14:52:57 by bonsthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,10 @@ void ScavTrap::attack(const std::string &target) {
 void ScavTrap::guardGate() const {
     std::cout << "ScavTrap " << _name << " is now in Gate keeper mode"
               << std::endl;
+}
+
+ScavTrap &ScavTrap::operator=(const ScavTrap &value) {
+	if (this != &value)
+		ClapTrap::operator=(value);
+	return (*this);
 }

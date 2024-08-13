@@ -6,12 +6,12 @@
 #    By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 21:50:15 by babonnet          #+#    #+#              #
-#    Updated: 2024/05/13 22:17:46 by babonnet         ###   ########.fr        #
+#    Updated: 2024/07/06 15:17:13 by babonnet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := megaphone
-CC := g++
+CC := c++
 CFLAGS := -std=c++98 -Wall -Wextra -Werror
 SRC_DIR := .
 HSRCS := .
@@ -30,6 +30,9 @@ all: $(NAME)
 
 avx2: CFLAGS += -mavx2 
 avx2: silentClean all
+
+sse4: CFLAGS += -msse4.2 
+sse4: silentClean all
 
 basic: silentClean all
 

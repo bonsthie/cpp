@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   search.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
+/*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 18:02:58 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/14 15:29:00 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/08/06 15:18:52 by bonsthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,18 @@ static int fill_number(const char *str) {
     return (i);
 }
 
-void PhoneBook::SEARCH(void) {
+int PhoneBook::SEARCH(void) {
     std::string str;
 
     if (_contact[0].getFirstName().empty()) {
         std::cout << "No Contacts" << std::endl;
-        return;
+        return (0);
     }
+
     displayTable(_contact, _divider);
     std::cout << "Enter un index: ";
-    str = readInput();
+    if (readInput(str))
+		return (1);
     int index = fill_number(str.c_str()) - 1;
     if (index >= 8 || index < 0)
         std::cout << "this index " << index + 1 << " is out of scop" << std::endl;
@@ -89,4 +91,5 @@ void PhoneBook::SEARCH(void) {
     else
         printInfo(_contact[index]);
     std::cout << _divider << std::endl;
+	return (0);
 }
