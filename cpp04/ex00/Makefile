@@ -20,6 +20,10 @@ YELLOW = \033[1;33m
 PURPLE = \e[0;35m
 NC = \033[0m
 
+ifeq ($(VERBOSE),true)
+	CFLAGS += -D VERBOSE
+endif
+
 all: $(NAME)
 
 $(NAME): $(OBJS)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
+/*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 19:33:19 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/21 14:25:25 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/08/12 14:49:22 by bonsthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,3 +95,13 @@ std::string  ClapTrap::getName(void) const { return _name; }
 unsigned int ClapTrap::getHealth(void) const { return _health; }
 unsigned int ClapTrap::getEnergyPoint(void) const { return _energyPoint; }
 unsigned int ClapTrap::getAttackDamage(void) const { return _attackDamage; }
+
+ClapTrap &ClapTrap::operator=(const ClapTrap &value) {
+	if (this == &value)
+        return *this;
+	this->_name = value._name;
+	this->_energyPoint = value._energyPoint;
+	this->_attackDamage = value._attackDamage;
+	this->_health = value._health ;
+	return (*this);
+}

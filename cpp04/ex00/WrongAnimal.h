@@ -6,13 +6,14 @@
 /*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 18:55:58 by bonsthie          #+#    #+#             */
-/*   Updated: 2024/08/12 20:12:37 by bonsthie         ###   ########.fr       */
+/*   Updated: 2024/08/12 20:33:03 by bonsthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <string>
+#include "Log.h"
 
 class WrongAnimal {
 public:

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+         #
+#    By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/19 15:05:30 by babonnet          #+#    #+#              #
-#    Updated: 2024/05/23 22:37:02 by babonnet         ###   ########.fr        #
+#    Updated: 2024/08/08 19:05:36 by bonsthie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ LIBMLX_FLAG = -lmlx -lSDL2 -Wl,-rpath,$(LIBMLX_DIR)
 LIBMLX_INCLUDE = includes
 
 #include lib for exec
-LIB = $(foreach lib,$(LIBRARIES),-L$($(lib)_DIR) $($(lib)_FLAG))
+_LIB = $(foreach lib,$(LIBRARIES),-L$($(lib)_DIR) $($(lib)_FLAG))
 #include lib for *.o
 LIB_DIR = $(foreach lib,$(LIBRARIES),-I $($(lib)_DIR)/$($(lib)_INCLUDE))
 #build all lib
@@ -51,7 +51,7 @@ ADDITIONAL_FLAGS =
 ################################ MAKEFILE RULES #####################################
 all: $(NAME)
 
-$(NAME): $(LIBS_BINARYS) $(OBJ)
+$(NAME): $(OBJ)
 	@echo "$(GREEN)Linking $(NAME)...$(NC)"
 	@$(CC) $(CFLAGS) $(OBJ) -o $@ $(LIB) $(ADDITIONAL_FLAGS)
 
@@ -89,6 +89,8 @@ debug: CFLAGS += -g
 debug: clean $(NAME)
 
 CPP11: CFLAGS += -std=c++11
+CPP11: $(LIBS_BINARYS)
+CPP11: LIB = $(_LIB)
 CPP11: clean $(NAME)
 
 CPP98: clean $(NAME)

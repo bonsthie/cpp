@@ -6,23 +6,29 @@
 /*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 19:15:24 by bonsthie          #+#    #+#             */
-/*   Updated: 2024/08/12 19:57:11 by bonsthie         ###   ########.fr       */
+/*   Updated: 2024/08/12 20:35:23 by bonsthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.h"
 #include <iostream>
 
-Animal::Animal(const std::string &type) : _type(type) {}
-
-Animal::Animal(void) : _type("Animal") {}
+Animal::Animal(const std::string &type) : _type(type){
+	LOG("constructor Animal string")
+}
+Animal::Animal(void) : _type("Animal") {
+	LOG("constructor Animal empty")
+}
 
 Animal::Animal(const Animal &src) {
   if (this != &src)
     *this = src;
+  LOG("constructor Animal copy")
 }
 
-Animal::~Animal(void) {}
+Animal::~Animal(void) {
+	LOG("destructor Animal empty")
+}
 
 const std::string &Animal::getType(void) const { return _type; }
 

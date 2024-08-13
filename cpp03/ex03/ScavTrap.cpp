@@ -6,7 +6,7 @@
 /*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:44:29 by babonnet          #+#    #+#             */
-/*   Updated: 2024/08/12 14:53:13 by bonsthie         ###   ########.fr       */
+/*   Updated: 2024/08/12 17:34:48 by bonsthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,11 @@ void ScavTrap::guardGate() const {
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &value) {
-	if (this != &value)
-		ClapTrap::operator=(value);
+	if (this == &value)
+		return (*this);
+	this->_name = value._name;
+	this->_energyPoint = value._energyPoint;
+	this->_attackDamage = value._attackDamage;
+	this->_health = value._health ;
 	return (*this);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
+/*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 18:47:58 by babonnet          #+#    #+#             */
-/*   Updated: 2024/05/22 23:52:15 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/08/12 14:41:24 by bonsthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ class ClapTrap {
     unsigned int getHealth(void) const;
     unsigned int getEnergyPoint(void) const;
     unsigned int getAttackDamage(void) const;
+
+    ClapTrap &operator=(const ClapTrap &);
 
   private:
     std::string  _name;
