@@ -6,7 +6,7 @@
 /*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 17:15:17 by babonnet          #+#    #+#             */
-/*   Updated: 2024/08/12 17:30:46 by bonsthie         ###   ########.fr       */
+/*   Updated: 2024/08/13 11:36:40 by bonsthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,5 @@ void DiamondTrap::printValue(void) const {
   std::cout << "_health " << _health << std::endl;
   std::cout << "_attackDamage " << _attackDamage << std::endl;
   std::cout << "_name " << _name << std::endl;
-  std::cout << "claptrap _name " << ClapTrap::_name << std::endl;
-}
+	  std::cout << "claptrap _name " << ClapTrap::_name << std::endl;
+	}
