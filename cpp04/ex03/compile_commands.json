@@ -1,0 +1,53 @@
+[
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp04/ex03",
+  "arguments": [
+   "c++",
+   "-std=c++98",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I",
+   ".",
+   "-o",
+   "obj/./Amateria.o",
+   "-c",
+   "Amateria.cpp"
+  ],
+  "file": "Amateria.cpp"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp04/ex03",
+  "arguments": [
+   "c++",
+   "-std=c++98",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I",
+   ".",
+   "-o",
+   "obj/./Ice.o",
+   "-c",
+   "Ice.cpp"
+  ],
+  "file": "Ice.cpp"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp04/ex03",
+  "arguments": [
+   "c++",
+   "-std=c++98",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I",
+   ".",
+   "-o",
+   "obj/./main.o",
+   "-c",
+   "main.cpp"
+  ],
+  "file": "main.cpp"
+ }
+]

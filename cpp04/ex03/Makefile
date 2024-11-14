@@ -1,17 +1,11 @@
-NAME := I_don’t_want_to_set_the_world_on_fire
+NAME := ex03
 CC := c++
-CFLAGS := -std=c++98 -Wall -Wextra -Werror
+CFLAGS := -std=c++98 -Wall -Wextra -Werror -g
 SRC_DIR := .
 HSRCS := .
 OBJ_DIR := obj
 
-SRC = main.cpp \
-	  Dog.cpp \
-	  Cat.cpp \
-	  Brain.cpp \
-	  Animal.cpp \
-	  WrongAnimal.cpp \
-	  WrongCat.cpp \
+SRC = $(shell find . -name '*.cpp')
 
 OBJS := $(patsubst %.cpp,$(OBJ_DIR)/%.o,$(SRC))
 

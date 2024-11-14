@@ -1,0 +1,32 @@
+#include "AMateria.h"
+#include <MateriaTemplate.h>
+#include <log.h>
+
+template <typename T>
+MateriaTemplate<T>::MateriaTemplate(const T &origin) {
+  *this = origin;
+  LOG(T::_typeName() + " by reference constructor");
+}
+
+template <typename T>
+MateriaTemplate<T>::MateriaTemplate(void) {
+  this->_type = T::_typeName();
+  LOG(T::_typeName() + " default constructor");
+}
+
+template <typename T>
+MateriaTemplate<T>::~MateriaTemplate(void) { LOG(T::_typeName() + " destructor"); }
+
+template <typename T>
+T &MateriaTemplate<T>::operator=(const T &origin) {
+	if (this != &origin) {
+		this->_type = origin._type;
+	}
+	return (*this);
+}
+
+template <typename T>
+AMateria *MateriaTemplate<T>::clone(void) const {
+	return (new T(*this));
+}
+
