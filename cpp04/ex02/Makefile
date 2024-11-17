@@ -9,7 +9,7 @@ SRC = main.cpp \
 	  Dog.cpp \
 	  Cat.cpp \
 	  Brain.cpp \
-	  Animal.cpp \
+	  AAnimal.cpp \
 	  WrongAnimal.cpp \
 	  WrongCat.cpp \
 

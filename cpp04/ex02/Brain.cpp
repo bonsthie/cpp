@@ -6,12 +6,13 @@
 /*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 10:55:44 by bonsthie          #+#    #+#             */
-/*   Updated: 2024/08/13 11:38:30 by bonsthie         ###   ########.fr       */
+/*   Updated: 2024/11/17 20:08:49 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "Brain.h"
+#include "Log.h"
 
 Brain::Brain() {
 	LOG("Brain constructor empty")

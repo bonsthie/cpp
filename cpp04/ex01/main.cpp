@@ -10,17 +10,17 @@
 int main() {
   std::cout << "---- delete test----" << std::endl;
   {
-    Animal *zoo[100];
+    Animal *zoo[10];
 
-    for (int i = 0; i < 50; i++) {
+    for (int i = 0; i < 5; i++) {
       zoo[i] = new Cat();
     }
 
-    for (int i = 50; i < 100; i++) {
+    for (int i = 5; i < 10; i++) {
       zoo[i] = new Dog();
     }
 
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 10; i++) {
       delete zoo[i];
     }
   }

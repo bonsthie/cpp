@@ -6,19 +6,19 @@
 /*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 19:13:50 by bonsthie          #+#    #+#             */
-/*   Updated: 2024/08/13 12:03:35 by bonsthie         ###   ########.fr       */
+/*   Updated: 2024/11/17 19:44:38 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.h"
 #include <iostream>
 
-Cat::Cat(void) : Animal("Cat") {
+Cat::Cat(void) : AAnimal("Cat") {
   LOG("constructor Cat empty")
   _brain = new Brain;
 }
 
-Cat::Cat(const Cat &src) : Animal("Cat") {
+Cat::Cat(const Cat &src) : AAnimal("Cat") {
   LOG("constructor Cat copy")
   if (this != &src)
     *this = src;

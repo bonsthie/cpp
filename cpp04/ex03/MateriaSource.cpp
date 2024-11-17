@@ -26,8 +26,7 @@ AMateria *MateriaSource::createMateria(std::string const &type) {
   for (int i = 0; i < MS_COUNT; i++) {
     if (_materia[i] && type.compare(_materia[i]->getType()) == 0) {
       void *ptr = _materia[i]->clone();
-	  std::cout << ptr << std::endl;
-	  return (AMateria *)ptr;
+      return (AMateria *)ptr;
     }
   }
   return NULL;

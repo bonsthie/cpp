@@ -23,7 +23,7 @@ Character::~Character(void) {
   LOG("Character destructor " + _name)
   for (int i = 0; i < CHARACTER_MATERIA_SIZE; i++) {
     if (_materia[i].ptr)
-		delete _materia[i].ptr;
+      delete _materia[i].ptr;
   }
 }
 
@@ -33,10 +33,10 @@ void Character::equip(AMateria *m) {
   if (!m)
     return;
   for (int i = 0; i < CHARACTER_MATERIA_SIZE; i++) {
-	if (m == _materia[i].ptr) {
-		std::cout << "materia already equip" << std::endl;
-		return ;
-	}
+    if (m == _materia[i].ptr) {
+      std::cout << "materia already equip" << std::endl;
+      return;
+    }
     if (_materia[i].ptr == NULL) {
       _materia[i].ptr = m;
       return;
@@ -52,10 +52,14 @@ void Character::unequip(int idx) {
 }
 
 void Character::use(int idx, ICharacter &target) {
-  if (idx >= CHARACTER_MATERIA_SIZE || idx < 0)
+  if (idx >= CHARACTER_MATERIA_SIZE || idx < 0) {
+    std::cout << "index " << idx << " out of scope" << std::endl;
     return;
-  if (_materia[idx].ptr == NULL || _materia[idx].unequip == true)
+  }
+  if (_materia[idx].ptr == NULL || _materia[idx].unequip == true) {
+    std::cout << "no materia at index " << idx << std::endl;
     return;
+  }
   _materia[idx].ptr->use(target);
 }
 

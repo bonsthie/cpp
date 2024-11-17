@@ -27,7 +27,7 @@ int main(void)
 
 	aaaa.unequip(0);
 	tmp = src->createMateria("ice");
-		me->equip(tmp);
+	me->equip(tmp);
 	tmp = rrr->createMateria("ice");
 	me->equip(tmp);
 	tmp = rrr->createMateria("cure");
@@ -41,6 +41,9 @@ int main(void)
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
 	me->use(1, *bob);
+
+	bob->use(999, *me);
+	bob->use(0, *me);
 
 	delete me;
 	delete bob;
