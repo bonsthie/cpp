@@ -1,0 +1,40 @@
+[
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp05/ex00",
+  "arguments": [
+   "c++",
+   "-std=c++98",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-D",
+   "VERBOSE",
+   "-I",
+   ".",
+   "-o",
+   "obj/./Bureaucrat.o",
+   "-c",
+   "Bureaucrat.cpp"
+  ],
+  "file": "Bureaucrat.cpp"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp05/ex00",
+  "arguments": [
+   "c++",
+   "-std=c++98",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-D",
+   "VERBOSE",
+   "-I",
+   ".",
+   "-o",
+   "obj/./main.o",
+   "-c",
+   "main.cpp"
+  ],
+  "file": "main.cpp"
+ }
+]
