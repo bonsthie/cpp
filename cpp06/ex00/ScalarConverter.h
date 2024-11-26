@@ -3,6 +3,7 @@
 #include <cctype>
 #include <iostream>
 #include <limits.h>
+#include <limits>
 #include <sstream>
 #include <string>
 
@@ -12,7 +13,7 @@ public:
   ScalarConverter(void);
   ~ScalarConverter(void);
 
-  void convert(const std::string &str);
+  static void convert(const std::string &str);
 
   ScalarConverter &operator=(ScalarConverter const &src);
 };
@@ -22,6 +23,7 @@ enum ScalarType {
   TYPE_INT,
   TYPE_FLOAT,
   TYPE_DOUBLE,
+  TYPE_NAN,
   TYPE_UNKNOW,
 };
 
@@ -32,13 +34,14 @@ template <typename T> void convertToChar(T value) {
   else if (!isprint(value))
     std::cout << "Non displayable";
   else
-    std::cout << static_cast<char>(value);
+    std::cout << '\'' << static_cast<char>(value) << '\'';
   std::cout << std::endl;
 }
 
 template <typename T> void convertToInt(T value) {
   std::cout << "int : ";
-  if (value > INT_MAX || value < INT_MIN)
+  if (value > std::numeric_limits<int>::max() ||
+      value < std::numeric_limits<int>::min())
     std::cout << "impossible!";
   else
     std::cout << static_cast<int>(value);
@@ -64,10 +67,13 @@ template <typename T> T strToType(const std::string &str) {
   return result;
 }
 
+template <>
+char strToType<char>(const std::string &str);
+
 template <typename T> void __convert(const std::string &str) {
-	T value = strToType<T>(str);
-	convertToChar(value);
-	convertToInt(value);
-	convertToFloat(value);
-	convertToDouble(value);
+  T value = strToType<T>(str);
+  convertToChar(value);
+  convertToInt(value);
+  convertToFloat(value);
+  convertToDouble(value);
 }

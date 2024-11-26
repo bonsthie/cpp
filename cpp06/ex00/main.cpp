@@ -1,8 +1,11 @@
 #include "ScalarConverter.h"
 
-int main(void)
-{
-	ScalarConverter test;
+int main(int ac, char **av) {
+  if (ac < 2) {
+    std::cout << "require an input" << std::endl;
+    return 1;
+  }
+  ScalarConverter test;
 
-	test.convert("124");
+  test.convert(av[1]);
 }
