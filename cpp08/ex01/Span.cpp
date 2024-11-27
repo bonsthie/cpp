@@ -2,6 +2,7 @@
 #include "log.h"
 #include <algorithm>
 #include <cstring>
+#include <limits>
 #include <stdexcept>
 #include <vector>
 
@@ -15,27 +16,39 @@ Span::Span(const Span &src) : _size(src.size()) {
         *this = src;
 }
 
-Span::~Span(void) { LOG("destructor Span") }
+Span::~Span(void){LOG("destructor Span")}
 
-const size_t Span::size(void) const { return _size; }
-const size_t Span::index(void) const { return _index; }
+size_t Span::size(void) const {
+    return _size;
+}
+size_t Span::index(void) const { return _index; }
 
 void Span::addNumber(int nb) {
     if (_index >= _size)
         throw std::runtime_error("no slot left");
-	_arr.push_back(nb);
+    _arr.push_back(nb);
+	_index++;
 }
 
 int Span::shortestSpan(void) const {
+    if (_index <= 1)
+        return (0);
     std::vector<int> sort_arr = _arr;
 
     std::sort(sort_arr.begin(), sort_arr.end());
 
-	for ()
+    int result = std::numeric_limits<int>::max();
+    for (std::vector<int>::size_type i = 1; i < sort_arr.size(); ++i) {
+        int tmp = sort_arr[i] - sort_arr[i - 1];
+        if (tmp < result)
+            result = tmp;
+    }
+
+    return result;
 }
 
 int Span::longestSpan(void) const {
-    if (_index >= 1)
+    if (_index <= 1)
         return (0);
     return (*std::max_element(_arr.begin(), _arr.end()) -
             *std::min_element(_arr.begin(), _arr.end()));

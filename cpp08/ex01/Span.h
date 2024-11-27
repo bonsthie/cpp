@@ -11,9 +11,9 @@ class Span {
 
     Span &operator=(Span const &src);
 
-    const size_t size(void) const;
-    const size_t index(void) const;
-    const int   *c_arr(void) const;
+    size_t size(void) const;
+    size_t index(void) const;
+    int   *c_arr(void) const;
 
     void addNumber(int nb);
 
