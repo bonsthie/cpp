@@ -9,13 +9,14 @@
 
 class ScalarConverter {
 public:
-  ScalarConverter(const ScalarConverter &ref);
   ScalarConverter(void);
   ~ScalarConverter(void);
 
   static void convert(const std::string &str);
 
   ScalarConverter &operator=(ScalarConverter const &src);
+private:
+  ScalarConverter(const ScalarConverter &ref);
 };
 
 enum ScalarType {

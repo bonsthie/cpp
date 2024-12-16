@@ -8,4 +8,5 @@ int main()
 	identify(yes);
 	std::cout << "ref idendifer : ";
 	identify(*yes);
+	delete yes;
 }
