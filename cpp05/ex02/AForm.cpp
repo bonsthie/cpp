@@ -6,8 +6,9 @@
 /* constuctor/destructor */
 
 AForm::AForm(const std::string &name, int minimumGradeSign,
-           int minimumGradeExecute)
+             int minimumGradeExecute)
     : _name(name),
+      _isSigned(false),
       _minimumGradeSign(minimumGradeSign),
       _minimumGradeExecute(minimumGradeExecute) {
     LOG("constructor AForm")
@@ -55,11 +56,11 @@ void AForm::beSigned(const Bureaucrat &b) {
 }
 
 void AForm::execute(const Bureaucrat &b) const {
-	if (_isSigned == false)
-		throw FormNotSign();
-	if (b.getGrade() > _minimumGradeExecute)
-		throw GradeTooLowException();
-	_interExecute(b);
+    if (_isSigned == false)
+        throw FormNotSign();
+    if (b.getGrade() > _minimumGradeExecute)
+        throw GradeTooLowException();
+    _interExecute(b);
 }
 
 void AForm::_checkGrade() const {

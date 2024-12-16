@@ -37,6 +37,8 @@ int main() {
         yes.signForm(*yes_form);
 
         yes.executeForm(*yes_form);
+
+        delete yes_form;
     } catch (const std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
@@ -50,6 +52,8 @@ int main() {
         yes.signForm(*yes_form);
 
         yes.executeForm(*yes_form);
+
+        delete yes_form;
     } catch (const std::exception &e) {
         std::cerr << e.what() << std::endl;
     }

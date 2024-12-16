@@ -4,8 +4,8 @@
 #define HIGHESTGRADE 1
 
 #include "ErrClassTemplate.h"
-#include <string>
 #include <iostream>
+#include <string>
 
 class AForm;
 
@@ -20,13 +20,13 @@ class Bureaucrat {
     ERR_CLASS(GradeTooLowException)
 
     const std::string &getName() const;
-    int               getGrade() const;
+    int                getGrade() const;
 
-	void				incrementGrade();
-	void				decrementGrade();
+    void incrementGrade();
+    void decrementGrade();
 
-	void				signForm(AForm &form);
-	void				executeForm(const AForm &form);
+    void signForm(AForm &form);
+    void executeForm(const AForm &form);
 
     Bureaucrat &operator=(Bureaucrat const &src);
     Bureaucrat &operator++(void);

@@ -4,8 +4,6 @@
 
 #include <unistd.h>
 
-#define SPACE std::cout << "\n\n\n";
-
 int main() {
 	{
         Intern someRandomIntern;
