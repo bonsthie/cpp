@@ -9,14 +9,15 @@
 
 class ScalarConverter {
 public:
-  ScalarConverter(void);
-  ~ScalarConverter(void);
 
   static void convert(const std::string &str);
 
-  ScalarConverter &operator=(ScalarConverter const &src);
 private:
   ScalarConverter(const ScalarConverter &ref);
+  ScalarConverter(void);
+  ~ScalarConverter(void);
+
+  ScalarConverter &operator=(ScalarConverter const &src);
 };
 
 enum ScalarType {
@@ -57,7 +58,7 @@ template <typename T> void convertToFloat(T value) {
 
 template <typename T> void convertToDouble(T value) {
   std::cout << "double : ";
-  std::cout << std::fixed << static_cast<float>(value);
+  std::cout << std::fixed << static_cast<double>(value);
   std::cout << std::endl;
 }
 
