@@ -52,13 +52,13 @@ template <typename T> void convertToInt(T value) {
 
 template <typename T> void convertToFloat(T value) {
   std::cout << "float : ";
-  std::cout << std::fixed << static_cast<float>(value) << "f";
+  std::cout << static_cast<float>(value) << "f";
   std::cout << std::endl;
 }
 
 template <typename T> void convertToDouble(T value) {
   std::cout << "double : ";
-  std::cout << std::fixed << static_cast<double>(value);
+  std::cout << static_cast<double>(value);
   std::cout << std::endl;
 }
 

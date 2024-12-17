@@ -21,8 +21,7 @@ int isNaN(const std::string &str) {
 
 ScalarType getStringType(const std::string &str) {
 
-    char       *error;
-    std::string test;
+    char *error;
 
     if (isNaN(str))
         return (TYPE_NAN);
@@ -33,7 +32,10 @@ ScalarType getStringType(const std::string &str) {
     (void)strtol(str.c_str(), &error, 10);
     if (*error == 0)
         return (error - str.c_str() < 11 ? TYPE_INT : TYPE_UNKNOW);
+
     double val = strtod(str.c_str(), &error);
+    if (val == HUGE_VAL_F64 || val == -HUGE_VAL_F64)
+        return (TYPE_UNKNOW);
     if (*error == 0)
         return (TYPE_DOUBLE);
 
