@@ -8,7 +8,7 @@ int main(int ac, char **av) {
 		return (1);
 	std::string str(av[1]);
 	try {
-		Date test(str);
+		Date test(str, "/");
 
 	} catch (const std::exception &e) {
 		std::cout << e.what() << std::endl;
