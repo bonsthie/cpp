@@ -3,9 +3,11 @@
 #include <stdint.h>
 #include <string>
 
-#define DATE_PATTERN(sep)                                                      \
-    "^([0-9]+)" + sep + "([0-9]{2})" + sep + "([0-9]{2})$"
-#define DEFAULT_DATE_PATTERN DATE_PATTERN(std::string("-"))
+#define DEFAULT_SEP "-"
+
+#define DATE_PATTERN(sep) "^([0-9]+)" + sep + "([0-9]{2})" + sep + "([0-9]{2})$"
+
+#define DEFAULT_DATE_PATTERN DATE_PATTERN(std::string(DEFAULT_SEP))
 
 #define INVALID_DATE_PATTERN(userInput, sep)                                   \
     "DATE: Invalid date format: expected 'YYYY" + sep + "MM" + sep +           \
@@ -22,9 +24,9 @@
 
 class Date {
   public:
+    // the default sep is set as DEFAULT_SEP "-"
     Date();
     Date(const std::string &date);
-    // the pattern is the regex use to pase the default is YYYY-MM-DD
     Date(const std::string &date, const std::string &sep);
 
     bool operator>(const Date &) const;
@@ -48,6 +50,6 @@ class Date {
     } _date;
     const std::string _sep;
 
-    static const int         _daysInMonth[13];
+    static const uint32_t    _daysInMonth[13];
     static const std::string _months[13];
 };

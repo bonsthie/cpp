@@ -2,29 +2,18 @@
 #include <Date.h>
 #include <FTregex>
 #include <stdexcept>
+#include <stdint.h>
 
-const int Date::_daysInMonth[13] = {0,  31, 29, 31, 30, 31, 30,
+const uint32_t Date::_daysInMonth[13] = {0,  31, 29, 31, 30, 31, 30,
                                     31, 31, 30, 31, 30, 31};
 
 const std::string Date::_months[13] = {
-    "",         
-    "January",  
-    "February", 
-    "March",    
-    "April",    
-    "May",      
-    "June",     
-    "July",     
-    "August",   
-    "September",
-    "October",  
-    "November", 
-    "December"  
-};
+    "",     "January", "February",  "March",   "April",    "May",     "June",
+    "July", "August",  "September", "October", "November", "December"};
 
-Date::Date() { _date.raw = 0; }
+Date::Date() : _sep(DEFAULT_SEP) { _date.raw = 0; }
 
-Date::Date(const std::string &date) : _sep("-") {
+Date::Date(const std::string &date) : _sep(DEFAULT_SEP) {
     _validDate(date, DEFAULT_DATE_PATTERN);
 }
 
@@ -36,6 +25,7 @@ static bool isLeapYear(unsigned year) {
     return (year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0));
 }
 
+#include <iostream>
 void Date::_validDate(const std::string &date, const std::string &pattern) {
     try {
         FTregex reg(pattern);
@@ -44,15 +34,20 @@ void Date::_validDate(const std::string &date, const std::string &pattern) {
 
         FTregMatch match = reg.match(date);
 
-        _date.year = strToType<uint16_t>(match[1]);
-        _date.month = strToType<uint8_t>(match[2]);
-        _date.day = strToType<uint8_t>(match[3]);
+        uint32_t year = strToType<uint32_t>(match[1]);
+        uint32_t month = strToType<uint32_t>(match[2]);
+        uint32_t day = strToType<uint32_t>(match[3]);
 
-        if (_date.month == 0 || _date.month > 12)
-            throw std::invalid_argument(DATE_INVALID_MONTH);
-		if (_date.day == 0 || _date.day > _daysInMonth[_date.month])
+		_date.year = year;
+		_date.month = month;
+		_date.day = day;
+
+		std::cout << month << std::endl;
+        if (month == 0 || month > 12)
+			throw std::invalid_argument(DATE_INVALID_MONTH);
+        if (day == 0 || day > _daysInMonth[month])
             throw std::invalid_argument(DATE_INVALID_DAY);
-        if (_date.month == 2 && !isLeapYear(_date.year) && _date.day > 28)
+        if (month == 2 && !isLeapYear(year) && day > 28)
             throw std::invalid_argument(DATE_INVALID_DAY);
 
     } catch (FTregex::regex_err &) {
@@ -62,18 +57,18 @@ void Date::_validDate(const std::string &date, const std::string &pattern) {
 
 inline std::string Date::_day_error_msg() {
     unsigned maxDays = _daysInMonth[_date.month];
-	bool leap = false;
+    bool     leap = false;
     if (_date.month == 2 && isLeapYear(_date.year)) {
         maxDays = 29;
-		leap = true;
+        leap = true;
     }
 
     std::ostringstream oss;
-    oss << "DATE: Invalid day: Days can only range from 1 to " 
-        << maxDays << " in " << _months[_date.month];
-	if (leap == true)
-		oss << " in leap year";
-	oss << ".";
+    oss << "DATE: Invalid day: Days can only range from 1 to " << maxDays
+        << " in " << _months[_date.month];
+    if (leap == true)
+        oss << " in leap year";
+    oss << ".";
     return oss.str();
 }
 
