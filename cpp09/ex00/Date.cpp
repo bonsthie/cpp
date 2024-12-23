@@ -1,25 +1,32 @@
 #include <Convert.h>
 #include <Date.h>
 #include <FTregex>
+#include <iomanip>
 #include <stdexcept>
 #include <stdint.h>
 
-const uint32_t Date::_daysInMonth[13] = {0,  31, 29, 31, 30, 31, 30,
-                                    31, 31, 30, 31, 30, 31};
+const uint32_t Date::_daysInMonth[13] = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-const std::string Date::_months[13] = {
-    "",     "January", "February",  "March",   "April",    "May",     "June",
-    "July", "August",  "September", "October", "November", "December"};
+const std::string Date::_months[13] = {"",        "January",  "February", "March",  "April",
+                                       "May",     "June",     "July",     "August", "September",
+                                       "October", "November", "December"};
 
 Date::Date() : _sep(DEFAULT_SEP) { _date.raw = 0; }
 
-Date::Date(const std::string &date) : _sep(DEFAULT_SEP) {
-    _validDate(date, DEFAULT_DATE_PATTERN);
-}
+Date::Date(const std::string &date) : _sep(DEFAULT_SEP) { _validDate(date, DEFAULT_DATE_PATTERN); }
 
 Date::Date(const std::string &date, const std::string &sep) : _sep(sep) {
     _validDate(date, DATE_PATTERN(sep));
 }
+
+std::string Date::toString() const {
+    std::ostringstream oss;
+    oss << _date.year << _sep << std::setfill('0') << std::setw(2) << (uint32_t)_date.month << _sep
+        << std::setfill('0') << std::setw(2) << (uint32_t)_date.day;
+    return oss.str();
+}
+
+uint32_t Date::getRaw() const { return _date.raw; }
 
 static bool isLeapYear(unsigned year) {
     return (year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0));
@@ -38,13 +45,12 @@ void Date::_validDate(const std::string &date, const std::string &pattern) {
         uint32_t month = strToType<uint32_t>(match[2]);
         uint32_t day = strToType<uint32_t>(match[3]);
 
-		_date.year = year;
-		_date.month = month;
-		_date.day = day;
+        _date.year = year;
+        _date.month = month;
+        _date.day = day;
 
-		std::cout << month << std::endl;
         if (month == 0 || month > 12)
-			throw std::invalid_argument(DATE_INVALID_MONTH);
+            throw std::invalid_argument(DATE_INVALID_MONTH);
         if (day == 0 || day > _daysInMonth[month])
             throw std::invalid_argument(DATE_INVALID_DAY);
         if (month == 2 && !isLeapYear(year) && day > 28)
@@ -64,29 +70,22 @@ inline std::string Date::_day_error_msg() {
     }
 
     std::ostringstream oss;
-    oss << "DATE: Invalid day: Days can only range from 1 to " << maxDays
-        << " in " << _months[_date.month];
+    oss << "DATE: Invalid day: Days can only range from 1 to " << maxDays << " in "
+        << _months[_date.month];
     if (leap == true)
         oss << " in leap year";
     oss << ".";
     return oss.str();
 }
 
-bool Date::operator>(const Date &ref) const {
-    return _date.raw > ref._date.raw;
-}
-bool Date::operator<(const Date &ref) const {
-    return _date.raw < ref._date.raw;
-}
-bool Date::operator>=(const Date &ref) const {
-    return _date.raw >= ref._date.raw;
-}
-bool Date::operator<=(const Date &ref) const {
-    return _date.raw <= ref._date.raw;
-}
-bool Date::operator==(const Date &ref) const {
-    return _date.raw == ref._date.raw;
-}
-bool Date::operator!=(const Date &ref) const {
-    return _date.raw != ref._date.raw;
+bool Date::operator>(const Date &ref) const { return _date.raw > ref._date.raw; }
+bool Date::operator<(const Date &ref) const { return _date.raw < ref._date.raw; }
+bool Date::operator>=(const Date &ref) const { return _date.raw >= ref._date.raw; }
+bool Date::operator<=(const Date &ref) const { return _date.raw <= ref._date.raw; }
+bool Date::operator==(const Date &ref) const { return _date.raw == ref._date.raw; }
+bool Date::operator!=(const Date &ref) const { return _date.raw != ref._date.raw; }
+
+std::ostream &operator<<(std::ostream &os, const Date &d) {
+    os << d.toString();
+    return os;
 }

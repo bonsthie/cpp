@@ -14,7 +14,7 @@ FTregex::FTregex(const char *pattern) {
 
 FTregex::~FTregex() { regfree(&_regex); }
 
-FTregMatch FTregex::match(const std::string &input) {
+FTregMatch FTregex::match(const std::string &input) const {
     size_t                  nGroups = _regex.re_nsub + 1;
     std::vector<regmatch_t> pmatch(nGroups);
     FTregMatch              groups;

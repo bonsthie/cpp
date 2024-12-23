@@ -3,13 +3,16 @@
 #include "Date.h"
 #include <map>
 #include <stdint.h>
-#include <string>
+
+#define BTC_DATA "data.csv"
 
 typedef std::map<Date, double> Market;
 
 class BitcoinExchange {
   public:
-    BitcoinExchange(std::string data_file);
+    BitcoinExchange(void);
+
+	float getBtcPrice(const Date &date);
 
   private:
 

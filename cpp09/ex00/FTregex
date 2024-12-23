@@ -14,7 +14,7 @@ class FTregex {
     FTregex(const char *pattern);
     ~FTregex();
 
-    FTregMatch match(const std::string &input);
+    FTregMatch match(const std::string &input) const;
 
 	int captureGroupSize(void) const;
 
