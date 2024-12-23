@@ -4,7 +4,7 @@
 #include <fstream>
 #include <stdexcept>
 
-#define LINE_FORMAT "^([0-9]+-[0-9]{2}-[0-9]{2}),([0-9]+(\\.[0-9]+)?)\n?$"
+#define LINE_FORMAT "^([^|]*),([0-9]+(\\.[0-9]+)?)\n?$"
 
 BitcoinExchange::BitcoinExchange() {
     std::ifstream data(BTC_DATA);

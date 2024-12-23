@@ -19,9 +19,9 @@ static void compute_line(const std::string &line, BitcoinExchange &market,
 
         float btc = strToType<float>(matches[2]);
         if (btc < 0)
-            throw std::runtime_error("Error: not a positive number.");
-        if (btc > 1000 || matches[2].length() > 4)
-            throw std::runtime_error("Error: too large a number.");
+            throw std::runtime_error("not a positive number.");
+        if (btc > 1000)
+            throw std::runtime_error("too large a number.");
         std::cout << date << " => " << btc << " = " << btc * price << std::endl;
 
     } catch (const std::exception &e) {
