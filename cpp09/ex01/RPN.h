@@ -2,8 +2,6 @@
 
 #include <unordered_map>
 
-typedef std::unordered_map<char, int(*)(int,int)> operatorMap;
-
 enum rpn_type {
 	RPN_NUM,
     RPN_MULT,
