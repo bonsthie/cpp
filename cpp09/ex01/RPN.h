@@ -1,5 +1,9 @@
 #pragma once
 
+#include <unordered_map>
+
+typedef std::unordered_map<char, int(*)(int,int)> operatorMap;
+
 enum rpn_type {
 	RPN_NUM,
     RPN_MULT,
@@ -11,10 +15,4 @@ enum rpn_type {
 	RPN_ERR,
 };
 
-int rpn_mult(int nb1, int nb2);
-int rpn_div(int nb1, int nb2);
-int rpn_sub(int nb1, int nb2);
-int rpn_add(int nb1, int nb2);
-int rpn_mod(int nb1, int nb2);
-
-int rpn(const char *str);
+void rpn(const char *str);
