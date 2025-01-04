@@ -1,0 +1,38 @@
+[
+ {
+  "directory": "/home/bonsthie/Documents/code/42/cpp/cpp09/ex02",
+  "arguments": [
+   "c++",
+   "-std=c++98",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I",
+   ".",
+   "-o",
+   "obj/./PmergeMe.o",
+   "-c",
+   "PmergeMe.cpp"
+  ],
+  "file": "PmergeMe.cpp"
+ },
+ {
+  "directory": "/home/bonsthie/Documents/code/42/cpp/cpp09/ex02",
+  "arguments": [
+   "c++",
+   "-std=c++98",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I",
+   ".",
+   "-o",
+   "obj/./main.o",
+   "-c",
+   "main.cpp"
+  ],
+  "file": "main.cpp"
+ }
+]
