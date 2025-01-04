@@ -6,7 +6,7 @@
 /*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 15:59:51 by bonsthie          #+#    #+#             */
-/*   Updated: 2024/12/25 16:34:33 by bonsthie         ###   ########.fr       */
+/*   Updated: 2024/12/30 11:26:32 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,35 @@ int rpn_sub(int nb1, int nb2) { return nb1 - nb2; }
 int rpn_add(int nb1, int nb2) { return nb1 + nb2; }
 
 int rpn_div(int nb1, int nb2) {
-    if (nb2 == 0)
-        throw std::runtime_error("you can't do a division by 0");
-    return nb1 / nb2;
+	if (nb2 == 0)
+		throw std::runtime_error("you can't do a division by 0");
+	return nb1 / nb2;
 }
 
 int rpn_mod(int nb1, int nb2) {
-    if (nb2 == 0)
-        throw std::runtime_error("you can't do a modulo by 0");
-    return nb1 % nb2;
+	if (nb2 == 0)
+		throw std::runtime_error("you can't do a modulo by 0");
+	return nb1 % nb2;
 }
 
-static const operatorMap operator_map = {
-    {'*', rpn_mult},
-	{'/', rpn_div},
-	{'+', rpn_add},
-	{'-', rpn_sub},
-	{'%', rpn_mod},
-};
+// dummy switch case and if else because i can't use unordored map.............
+rpn_type get_rpn_type(const char c) {
+    if (isdigit(c))
+        return RPN_NUM;
+    else if (c == '*')
+        return RPN_MULT;
+    else if (c == '/')
+        return RPN_DIV;
+    else if (c == '+')
+        return RPN_ADD;
+    else if (c == '-')
+        return RPN_SUB;
+    else if (c == '%')
+        return RPN_MOD;
+    else if (c == ' ')
+        return RPN_SPACE;
+    return RPN_ERR;
+}
 
 void rpn_sign(const char *str, std::stack<int> &stack, int sign(int, int)) {
     int a, b;
@@ -60,17 +71,33 @@ void rpn(const char *str) {
     std::stack<int> stack;
 
     while (*str) {
-        if (isdigit(*str))
+        switch (get_rpn_type(*str)) {
+        case RPN_NUM:
             stack.push(*str - '0');
-        else if (*str != ' ') {
-            operatorMap::const_iterator it = operator_map.find(*str);
-            if (it == operator_map.end())
-                throw std::runtime_error("invalid formating");
-            rpn_sign(str, stack, it->second);
+            break;
+        case RPN_MULT:
+            rpn_sign(str, stack, rpn_mult);
+            break;
+        case RPN_DIV:
+            rpn_sign(str, stack, rpn_div);
+            break;
+        case RPN_SUB:
+            rpn_sign(str, stack, rpn_sub);
+            break;
+        case RPN_ADD:
+            rpn_sign(str, stack, rpn_add);
+            break;
+        case RPN_MOD:
+            rpn_sign(str, stack, rpn_mod);
+            break;
+        case RPN_SPACE:
+            break;
+        default:
+			throw std::runtime_error("invalid formating");
         }
         str++;
     }
     if (stack.size() != 1)
-        throw std::runtime_error("invalid formating");
+		throw std::runtime_error("invalid formating");
     std::cout << stack.top() << std::endl;
 }
