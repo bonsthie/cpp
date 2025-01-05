@@ -118,14 +118,14 @@ std::vector<uint32_t> pmergeme(const char *str) {
 
     init_merge_pair(str, pair_vector, odd);
 
-	size_t size = pair_vector.size() - (odd == true) - 1;
+	size_t size = pair_vector.size() - (odd == true);
 
 #ifdef VERBOSE
     for (pair_vector_u32_t::iterator it = pair_vector.begin(); it != pair_vector.end(); it++) {
         LOG("pair [ " << it->first << ", " << it->second << " ]")
     }
 #endif
-    merge_sort_pair(pair_vector, 0, size);
+    merge_sort_pair(pair_vector, 0, size - 1);
 
 #ifdef VERBOSE
     for (pair_vector_u32_t::iterator it = pair_vector.begin(); it != pair_vector.end(); it++) {
@@ -134,20 +134,17 @@ std::vector<uint32_t> pmergeme(const char *str) {
 #endif
     std::vector<uint32_t> res(size);
 
-	for (size_t i = 0; i <= size; i++) {
+	for (size_t i = 0; i < size; i++) {
 		res[i] = pair_vector[i].first;
-		LOG(res[i])
 	}
 
-	std::cout << std::endl;
-
-	for (size_t i = 0; i <= size; i++) {
-		LOG(pair_vector[i].second)
+	for (size_t i = 0; i < size; i++) {
 		insertion(res, pair_vector[i].second);
 	}
 
-	for (size_t i = 0; i  <= size * 2; i++)
-		std::cout << res[i] << " ";
+	if (odd == true) {
+		insertion(res, pair_vector[size].first);
+	}
 
     return (res);
 }
