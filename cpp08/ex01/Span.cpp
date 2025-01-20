@@ -30,6 +30,13 @@ void Span::addNumber(int nb) {
 	_index++;
 }
 
+void Span::addNumber(std::vector<int>::iterator start, std::vector<int>::iterator end) {
+    if (static_cast<size_t>(std::distance(start, end)) > _size - _index)
+        throw std::runtime_error("no slot left");
+    _arr.insert(_arr.end(), start, end);
+    _index += std::distance(start, end);
+}
+
 int Span::shortestSpan(void) const {
     if (_index <= 1)
         return (0);
