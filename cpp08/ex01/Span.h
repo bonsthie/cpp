@@ -16,6 +16,8 @@ class Span {
     int   *c_arr(void) const;
 
     void addNumber(int nb);
+    void addNumber(std::vector<int>::iterator start,
+                   std::vector<int>::iterator end);
 
     int shortestSpan(void) const;
     int longestSpan(void) const;
