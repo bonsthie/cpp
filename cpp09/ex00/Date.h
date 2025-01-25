@@ -11,16 +11,15 @@
 
 #define DEFAULT_DATE_PATTERN DATE_PATTERN(std::string(DEFAULT_SEP))
 
-#define INVALID_DATE_PATTERN(userInput, sep)                                   \
-    "DATE: Invalid date format: expected 'YYYY" + sep + "MM" + sep +           \
-        "DD', but got '" + userInput + "'."
+#define INVALID_DATE_PATTERN(userInput, sep)                                                       \
+    "DATE: Invalid date format: expected 'YYYY" + sep + "MM" + sep + "DD', but got '" +            \
+        userInput + "'."
 
-#define DATE_INVALID_CAPTURE_GROUPS                                            \
-    "DATE: Invalid pattern capture Groups: The pattern should have 3 capture " \
+#define DATE_INVALID_CAPTURE_GROUPS                                                                \
+    "DATE: Invalid pattern capture Groups: The pattern should have 3 capture "                     \
     "Groups."
 
-#define DATE_INVALID_MONTH                                                     \
-    "DATE: Invalid month : Months can only range from 1 to 12."
+#define DATE_INVALID_MONTH "DATE: Invalid month : Months can only range from 1 to 12."
 
 #define DATE_INVALID_DAY _day_error_msg()
 
@@ -31,8 +30,8 @@ class Date {
     Date(const std::string &date);
     Date(const std::string &date, const std::string &sep);
 
-	std::string toString(void) const;
-	uint32_t getRaw() const;
+    std::string toString(void) const;
+    uint32_t    getRaw() const;
 
     bool operator>(const Date &) const;
     bool operator<(const Date &) const;
@@ -42,15 +41,16 @@ class Date {
     bool operator!=(const Date &) const;
 
   private:
-    void _validDate(const std::string &date, const std::string &pattern);
+    void               _validDate(const std::string &date, const std::string &pattern);
+    std::string        getLocalizedMonthName(unsigned month);
     inline std::string _day_error_msg();
 
     union {
         uint32_t raw;
         struct {
-			uint8_t  day;
+            uint8_t  day;
             uint8_t  month;
-			uint16_t year;
+            uint16_t year;
         };
     } _date;
     const std::string _sep;

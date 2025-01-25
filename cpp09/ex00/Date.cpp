@@ -1,7 +1,9 @@
 #include <Convert.h>
 #include <Date.h>
 #include <FTregex>
+#include <ctime>
 #include <iomanip>
+#include <locale>
 #include <stdexcept>
 #include <stdint.h>
 
@@ -61,6 +63,27 @@ void Date::_validDate(const std::string &date, const std::string &pattern) {
     }
 }
 
+std::string Date::getLocalizedMonthName(unsigned month) {
+    if (month < 1 || month > 12) {
+        throw std::out_of_range("Month must be in the range 1 to 12");
+    }
+
+	try {
+		const std::locale &loc = std::locale("");
+
+		std::ostringstream oss;
+		oss.imbue(loc); // Use the given locale
+		std::tm timeStruct = {};
+		timeStruct.tm_mon = month - 1;
+		timeStruct.tm_mday = 1;
+		std::use_facet<std::time_put<char> >(loc).put(oss, oss, ' ', &timeStruct, 'B');
+		return oss.str();
+	}
+	catch (const std::runtime_error &e) {
+		return _months[month];
+	}
+}
+
 inline std::string Date::_day_error_msg() {
     unsigned maxDays = _daysInMonth[_date.month];
     bool     leap = false;
@@ -71,10 +94,8 @@ inline std::string Date::_day_error_msg() {
 
     std::ostringstream oss;
     oss << "DATE: Invalid day: Days can only range from 1 to " << maxDays << " in "
-        << _months[_date.month];
-    if (leap == true)
-        oss << " in leap year";
-    oss << ".";
+        << getLocalizedMonthName(_date.month)
+		<< (leap ? " in a leap year." : ".");
     return oss.str();
 }
 

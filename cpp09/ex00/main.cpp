@@ -22,16 +22,19 @@ static void compute_line(const std::string &line, BitcoinExchange &market,
             throw std::runtime_error("not a positive number.");
         if (btc > 1000)
             throw std::runtime_error("too large a number.");
-        std::cout << date << " => " << btc << " = " << btc * price << std::endl;
+        std::cerr << date << " => " << btc << " = " << btc * price << std::endl;
 
     } catch (const std::exception &e) {
-        std::cout << "Error: " << e.what() << " [" << line << "]" << std::endl;
+        std::cerr << "Error: " << e.what() << " [" << line << "]" << std::endl;
     }
 }
 
 int main(int ac, char **av) {
     if (ac != 2)
-        return (1);
+	{
+		std::cerr << "Wrong arg" << std::endl; 
+		return (1);
+	}
 
     try {
         BitcoinExchange market;
