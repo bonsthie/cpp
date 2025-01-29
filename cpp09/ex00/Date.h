@@ -42,7 +42,7 @@ class Date {
 
   private:
     void               _validDate(const std::string &date, const std::string &pattern);
-    std::string        getLocalizedMonthName(unsigned month);
+    std::string        _getLocalizedMonthName(unsigned month);
     inline std::string _day_error_msg();
 
     union {

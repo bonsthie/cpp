@@ -34,7 +34,6 @@ static bool isLeapYear(unsigned year) {
     return (year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0));
 }
 
-#include <iostream>
 void Date::_validDate(const std::string &date, const std::string &pattern) {
     try {
         FTregex reg(pattern);
@@ -63,7 +62,7 @@ void Date::_validDate(const std::string &date, const std::string &pattern) {
     }
 }
 
-std::string Date::getLocalizedMonthName(unsigned month) {
+std::string Date::_getLocalizedMonthName(unsigned month) {
     if (month < 1 || month > 12) {
         throw std::out_of_range("Month must be in the range 1 to 12");
     }
@@ -94,7 +93,7 @@ inline std::string Date::_day_error_msg() {
 
     std::ostringstream oss;
     oss << "DATE: Invalid day: Days can only range from 1 to " << maxDays << " in "
-        << getLocalizedMonthName(_date.month)
+        << _getLocalizedMonthName(_date.month)
 		<< (leap ? " in a leap year." : ".");
     return oss.str();
 }
