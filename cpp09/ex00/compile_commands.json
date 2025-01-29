@@ -1,59 +1,74 @@
 [
-  {
-    "arguments": [
-      "/usr/bin/c++",
-      "-std=c++98",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-g",
-      "-I",
-      ".",
-      "-c",
-      "-o",
-      "obj/./main.o",
-      "main.cpp"
-    ],
-    "directory": "/home/babonnet/doc/cpp/cpp09/ex00",
-    "file": "/home/babonnet/doc/cpp/cpp09/ex00/main.cpp",
-    "output": "/home/babonnet/doc/cpp/cpp09/ex00/obj/main.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/c++",
-      "-std=c++98",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-g",
-      "-I",
-      ".",
-      "-c",
-      "-o",
-      "obj/./FTregex.o",
-      "FTregex.cpp"
-    ],
-    "directory": "/home/babonnet/doc/cpp/cpp09/ex00",
-    "file": "/home/babonnet/doc/cpp/cpp09/ex00/FTregex.cpp",
-    "output": "/home/babonnet/doc/cpp/cpp09/ex00/obj/FTregex.o"
-  },
-  {
-    "arguments": [
-      "/usr/bin/c++",
-      "-std=c++98",
-      "-Wall",
-      "-Wextra",
-      "-Werror",
-      "-g",
-      "-I",
-      ".",
-      "-c",
-      "-o",
-      "obj/./Date.o",
-      "Date.cpp"
-    ],
-    "directory": "/home/babonnet/doc/cpp/cpp09/ex00",
-    "file": "/home/babonnet/doc/cpp/cpp09/ex00/Date.cpp",
-    "output": "/home/babonnet/doc/cpp/cpp09/ex00/obj/Date.o"
-  }
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp09/ex00",
+  "arguments": [
+   "c++",
+   "-std=c++98",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I",
+   ".",
+   "-o",
+   "obj/./Date.o",
+   "-c",
+   "Date.cpp"
+  ],
+  "file": "Date.cpp"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp09/ex00",
+  "arguments": [
+   "c++",
+   "-std=c++98",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I",
+   ".",
+   "-o",
+   "obj/./FTregex.o",
+   "-c",
+   "FTregex.cpp"
+  ],
+  "file": "FTregex.cpp"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp09/ex00",
+  "arguments": [
+   "c++",
+   "-std=c++98",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I",
+   ".",
+   "-o",
+   "obj/./BitcoinExchange.o",
+   "-c",
+   "BitcoinExchange.cpp"
+  ],
+  "file": "BitcoinExchange.cpp"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/cpp/cpp09/ex00",
+  "arguments": [
+   "c++",
+   "-std=c++98",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g",
+   "-I",
+   ".",
+   "-o",
+   "obj/./main.o",
+   "-c",
+   "main.cpp"
+  ],
+  "file": "main.cpp"
+ }
 ]

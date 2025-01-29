@@ -1,6 +1,6 @@
 #include <Convert.h>
 #include <Date.h>
-#include <FTregex>
+#include <FTregex.h>
 #include <iomanip>
 #include <stdexcept>
 #include <stdint.h>
@@ -32,7 +32,6 @@ static bool isLeapYear(unsigned year) {
     return (year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0));
 }
 
-#include <iostream>
 void Date::_validDate(const std::string &date, const std::string &pattern) {
     try {
         FTregex reg(pattern);

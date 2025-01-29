@@ -1,7 +1,7 @@
 #include "BitcoinExchange.h"
 #include <Convert.h>
 #include <Date.h>
-#include <FTregex>
+#include <FTregex.h>
 #include <exception>
 #include <fstream>
 #include <iostream>

@@ -14,6 +14,8 @@ class BitcoinExchange {
 
 	float getBtcPrice(const Date &date);
 
+	void addDataCsv(const char *csv);
+
   private:
 
 	Market _market;

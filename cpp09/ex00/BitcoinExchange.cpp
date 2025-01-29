@@ -1,20 +1,31 @@
 #include <BitcoinExchange.h>
 #include <Convert.h>
-#include <FTregex>
+#include <FTregex.h>
 #include <fstream>
 #include <stdexcept>
 
+// date | number
 #define LINE_FORMAT "^([^|]*),([0-9]+(\\.[0-9]+)?)\n?$"
 
 BitcoinExchange::BitcoinExchange() {
-    std::ifstream data(BTC_DATA);
+	addDataCsv(BTC_DATA);
+}
+
+void BitcoinExchange::addDataCsv(const char *csv) {
+    std::ifstream data(csv);
     if (data.is_open() == false)
         throw std::runtime_error("BitcoinExchange : could not open the bitcoin data");
 
     FTregex     reg(LINE_FORMAT);
     std::string line;
     int         lineNumber = 2;
+
+	// header parsing 
     std::getline(data, line);
+	if (line.empty() || line.compare("date,exchange_rate"))
+        throw std::runtime_error("BitcoinExchange : invalid data");
+
+	// data parsing
     while (std::getline(data, line)) {
         try {
 
@@ -30,9 +41,12 @@ BitcoinExchange::BitcoinExchange() {
         }
         lineNumber++;
     }
+
+	if (_market.empty())
+        throw std::runtime_error("BitcoinExchange : no data Found");
+
 }
 
-#include <iostream>
 float BitcoinExchange::getBtcPrice(const Date &date) {
     Market::iterator it = _market.lower_bound(date);
 

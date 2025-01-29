@@ -1,4 +1,4 @@
-#include <FTregex>
+#include <FTregex.h>
 
 FTregex::FTregex(const std::string &pattern) {
     int status = regcomp(&_regex, pattern.c_str(), REG_EXTENDED);
