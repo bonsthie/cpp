@@ -6,53 +6,37 @@
 /*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 15:59:51 by bonsthie          #+#    #+#             */
-/*   Updated: 2024/12/30 11:26:32 by babonnet         ###   ########.fr       */
+/*   Updated: 2025/01/29 18:10:01 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.h"
 #include <ctype.h>
 #include <iostream>
+#include <sstream>
 #include <stack>
 #include <stdexcept>
 #include <stdint.h>
+#include <sys/ioctl.h>
+#include <unistd.h>
 
-int rpn_mult(int nb1, int nb2) { return nb1 * nb2; }
-int rpn_sub(int nb1, int nb2) { return nb1 - nb2; }
-int rpn_add(int nb1, int nb2) { return nb1 + nb2; }
+static int rpn_mult(int nb1, int nb2) { return nb1 * nb2; }
+static int rpn_sub(int nb1, int nb2) { return nb1 - nb2; }
+static int rpn_add(int nb1, int nb2) { return nb1 + nb2; }
 
-int rpn_div(int nb1, int nb2) {
-	if (nb2 == 0)
-		throw std::runtime_error("you can't do a division by 0");
-	return nb1 / nb2;
+static int rpn_div(int nb1, int nb2) {
+    if (nb2 == 0)
+        throw std::runtime_error("you can't do a division by 0");
+    return nb1 / nb2;
 }
 
-int rpn_mod(int nb1, int nb2) {
-	if (nb2 == 0)
-		throw std::runtime_error("you can't do a modulo by 0");
-	return nb1 % nb2;
+static int rpn_mod(int nb1, int nb2) {
+    if (nb2 == 0)
+        throw std::runtime_error("you can't do a modulo by 0");
+    return nb1 % nb2;
 }
 
-// dummy switch case and if else because i can't use unordored map.............
-rpn_type get_rpn_type(const char c) {
-    if (isdigit(c))
-        return RPN_NUM;
-    else if (c == '*')
-        return RPN_MULT;
-    else if (c == '/')
-        return RPN_DIV;
-    else if (c == '+')
-        return RPN_ADD;
-    else if (c == '-')
-        return RPN_SUB;
-    else if (c == '%')
-        return RPN_MOD;
-    else if (c == ' ')
-        return RPN_SPACE;
-    return RPN_ERR;
-}
-
-void rpn_sign(const char *str, std::stack<int> &stack, int sign(int, int)) {
+static void rpn_sign(const char *str, std::stack<int> &stack, int sign(int, int)) {
     int a, b;
 
     if (stack.size() < 2)
@@ -67,37 +51,67 @@ void rpn_sign(const char *str, std::stack<int> &stack, int sign(int, int)) {
         throw std::runtime_error("invalid formating");
 }
 
+static int get_term_width() {
+    struct winsize w;
+    if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &w) == 0) {
+        return w.ws_col;
+    } else {
+        return 80; // Default fallback width
+    }
+}
+
+// create a linter error message with the max with of the terminal
+static std::string rpn_error(const char *msg, const char *start, size_t error_index) {
+    size_t term_size = get_term_width();
+
+    std::string str(start);
+
+    size_t trim_index = (error_index + term_size) & term_size;
+    if (trim_index > str.size())
+        trim_index = str.size();
+    std::string tri_str_start = str.substr(0, trim_index);
+    std::string space_index(error_index, ' ');
+
+    std::ostringstream o;
+    o << "\n\n" << tri_str_start << "\n" << space_index << "^\n" << space_index << msg;
+
+    return o.str();
+}
+
+// dummy switch case and if else because i can't use unordored map.............
+static void _action(const char *index, std::stack<int> &stack) {
+    if (isdigit(*index))
+        stack.push(*index - '0');
+
+    else if (*index == '*')
+        rpn_sign(index, stack, rpn_mult);
+    else if (*index == '/')
+        rpn_sign(index, stack, rpn_div);
+    else if (*index == '+')
+        rpn_sign(index, stack, rpn_add);
+    else if (*index == '-')
+        rpn_sign(index, stack, rpn_sub);
+    else if (*index == '%')
+        rpn_sign(index, stack, rpn_mod);
+    else if (*index == ' ')
+        return; // ' ' do nothing
+    else
+        throw std::runtime_error("invalid formating");
+}
+
 void rpn(const char *str) {
+    const char     *index = str;
     std::stack<int> stack;
 
-    while (*str) {
-        switch (get_rpn_type(*str)) {
-        case RPN_NUM:
-            stack.push(*str - '0');
-            break;
-        case RPN_MULT:
-            rpn_sign(str, stack, rpn_mult);
-            break;
-        case RPN_DIV:
-            rpn_sign(str, stack, rpn_div);
-            break;
-        case RPN_SUB:
-            rpn_sign(str, stack, rpn_sub);
-            break;
-        case RPN_ADD:
-            rpn_sign(str, stack, rpn_add);
-            break;
-        case RPN_MOD:
-            rpn_sign(str, stack, rpn_mod);
-            break;
-        case RPN_SPACE:
-            break;
-        default:
-			throw std::runtime_error("invalid formating");
+    while (*index) {
+        try {
+            _action(index, stack);
+        } catch (std::exception &e) {
+            throw std::runtime_error(rpn_error(e.what(), str, index - str));
         }
-        str++;
+        index++;
     }
     if (stack.size() != 1)
-		throw std::runtime_error("invalid formating");
+        throw std::runtime_error("invalid formating");
     std::cout << stack.top() << std::endl;
 }
