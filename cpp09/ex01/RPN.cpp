@@ -6,7 +6,7 @@
 /*   By: bonsthie <bonsthie@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 15:59:51 by bonsthie          #+#    #+#             */
-/*   Updated: 2025/01/29 18:10:01 by babonnet         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:26:47 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,14 @@ static std::string rpn_error(const char *msg, const char *start, size_t error_in
 
     std::string str(start);
 
-    size_t trim_index = (error_index + term_size) & term_size;
+	size_t trim_index = (error_index + term_size - 1) & ~(term_size - 1);
     if (trim_index > str.size())
         trim_index = str.size();
     std::string tri_str_start = str.substr(0, trim_index);
     std::string space_index(error_index, ' ');
 
     std::ostringstream o;
-    o << "\n\n" << tri_str_start << "\n" << space_index << "^\n" << space_index << msg;
+    o << msg << "\n\n" << tri_str_start << "\n" << space_index << "^";
 
     return o.str();
 }

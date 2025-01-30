@@ -115,7 +115,7 @@ void pmergeme(char **str) {
     }
 
     if (odd == true) {
-        insertion(res, pair_vector[size].first);
+        insertion(res, pair_vector[size].second);
     })
 
 	print_res(start, res, merge_time, insert_time);
