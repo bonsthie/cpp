@@ -16,9 +16,7 @@ RobotomyRequestForm::~RobotomyRequestForm(void){
     LOG("destructor RobotomyRequestForm")}
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(
-    RobotomyRequestForm const &src) {
-    if (this == &src)
-        return (*this);
+    RobotomyRequestForm const &) {
     return (*this);
 }
 
